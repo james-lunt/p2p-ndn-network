@@ -1,0 +1,2 @@
+python node.py --listenport 33011 --sendport 33012 --destport 0 --make-connection 0 & \
+python node.py --listenport 33013 --sendport 33014 --destport 33011 --make-connection 1 &

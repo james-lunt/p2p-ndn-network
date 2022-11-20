@@ -3,12 +3,12 @@ import socket
 import threading
 import argparse
 
-def setup_sockets(port):
+def setup_sockets(listen_port,send_port):
     listen_socket = socket.socket()
     send_socket = socket.socket()
     print ("Socket successfully created")
-    listen_port = port    
     listen_socket.bind(('', listen_port))
+    send_socket.bind(('',send_port))
     return listen_socket,send_socket
  
 def new_connection(c,addr):
@@ -34,12 +34,17 @@ def send_outbound(send_socket,name, port):
 
 if __name__ =="__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--port', help='Node port', type=int)
+    parser.add_argument('--listenport', help='Listen port', type=int)
+    parser.add_argument('--sendport', help='Send port', type=int)
     parser.add_argument('--destport', help='Node port you want to connect to', type=int)
     parser.add_argument('--make-connection', help='Do you want to connect or not', type=int)
     args = parser.parse_args()
-    if args.port is None:
-        print("Please specify the Node port")
+
+    if args.listenport is None:
+        print("Please specify the listen port")
+        exit(1)
+    if args.sendport is None:
+        print("Please specify the send port")
         exit(1)
     if args.destport is None:
         print("Please specify the Destination port")
@@ -49,7 +54,7 @@ if __name__ =="__main__":
         exit(1)
 
     #setup inbound and outbound ports
-    s_inbound,s_outbound = setup_sockets(args.port)
+    s_inbound,s_outbound = setup_sockets(args.listenport,args.sendport)
 
     # creating thread
     t1 = threading.Thread(target=inbound, args=(s_inbound,))
