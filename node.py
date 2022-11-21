@@ -2,6 +2,7 @@
 import socket
 import threading
 import argparse
+import random
 
 def setup_sockets(listen_port,send_port):
     listen_socket = socket.socket()
@@ -35,17 +36,33 @@ def inbound(listen_socket,print_lock):
         threading.Thread(target=new_connection, args=(c,addr,print_lock)).start()
         #c.close()
 
-def send_outbound(send_socket,name, port):
-    send_socket.connect((name,port))
+#Connects to port once one is listening
+def attempt_connection(send_socket,node_connection_list,name):
+    print("Checking for available ports")
+    waiting_for_port_message = True
     while True:
-        message = input('send something')
+        port = int(random.choice(node_connection_list))
+        try:
+            send_socket.connect((name,port))
+            break
+        except:
+            if waiting_for_port_message:
+                print("Waiting for a listening port.")
+                waiting_for_port_message = False 
+
+def send_outbound(send_socket,name,node_connection_list):
+    #Pick random connectable port to connect to 
+    attempt_connection(send_socket,node_connection_list,name)
+    while True:
+        message = input('Ask the network for information: ')
+        #check = a_socket.connect_ex(location)
 
         #message sent to node
         send_socket.send(message.encode('ascii'))
         data = send_socket.recv(1024)
         print('Received from the server :',str(data.decode('ascii')))
  
-        # ask the client whether he wants to continue
+        # ask the node whether he wants to continue
         ans = input('\nDo you want to continue(y/n) :')
         if ans == 'y':
             continue
@@ -53,13 +70,12 @@ def send_outbound(send_socket,name, port):
             break
     send_socket.close()
 
-
 if __name__ =="__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--listenport', help='Listen port', type=int)
     parser.add_argument('--sendport', help='Send port', type=int)
-    parser.add_argument('--destport', help='Node port you want to connect to', type=int)
-    parser.add_argument('--make-connection', help='Do you want to connect or not', type=int)
+    parser.add_argument('--connection-list', help='List ports possible to connect to seperated by commas', type=str)
+    parser.add_argument('--base-node', help="Specify if this is the first node in the network",type=int)
     args = parser.parse_args()
 
     if args.listenport is None:
@@ -68,13 +84,16 @@ if __name__ =="__main__":
     if args.sendport is None:
         print("Please specify the send port")
         exit(1)
-    if args.destport is None:
-        print("Please specify the Destination port")
+    if args.connection_list is None:
+        print("Please specify List of ports to connect to seperated by commas")
         exit(1)
-    if args.make_connection is None:
-        print("Pleace specify if you want to make a connection")
+    if args.base_node is None:
+        print("Pleace specify if this is a base node")
         exit(1)
 
+    #Makes a list of ports that the node is specified to be able to connect to
+    node_connection_list = args.connection_list.split(",")
+    print(node_connection_list)
     #Thread mutex
     print_lock = threading.Lock()
 
@@ -83,11 +102,13 @@ if __name__ =="__main__":
 
     # creating thread
     t1 = threading.Thread(target=inbound, args=(s_inbound,print_lock,))
+
+    #If this node is the first in the network then it should not try to make a connection
     connection = False
-    if args.make_connection==1:
+    if args.base_node==1:
         print("Connection True")
         connection=True
-        t2 = threading.Thread(target=send_outbound, args=(s_outbound,'rasp-014',args.destport))
+        t2 = threading.Thread(target=send_outbound, args=(s_outbound,'rasp-014',node_connection_list))
 
     # starting thread 1
     t1.start()
