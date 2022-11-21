@@ -11,26 +11,48 @@ def setup_sockets(listen_port,send_port):
     send_socket.bind(('',send_port))
     return listen_socket,send_socket
  
-def new_connection(c,addr):
-    #while True:
-    print ('Got connection from', addr )    
+def new_connection(c,addr,print_lock):
     c.send(b'Thank you for connecting')
-    #c.close()    
+    while True:
+        data = c.recv(1024)
+        if not data:
+            print('Bye')
 
-def inbound(listen_socket):
+            print_lock.release()
+            break
+        #will do something here with the message
+        print('Received from : ', addr[1], str(data.decode('ascii')))
+        c.send("Got your message")
+    c.close()    
+
+def inbound(listen_socket,print_lock):
     listen_socket.listen(5)   
     print ("socket is listening")
     while True:
         c, addr = listen_socket.accept()
-        
-        threading.Thread(target=new_connection, args=(c,addr)).start()
+        print_lock.acquire()
+        print('Connected to: ', addr[0], ':', addr[1])
+        threading.Thread(target=new_connection, args=(c,addr,print_lock)).start()
         #c.close()
 
-def send_outbound(send_socket,name, port): 
-    send_socket.connect((name, port))
-    print (send_socket.recv(1024).decode())
+def send_outbound(send_socket,name, port):
+    send_socket.connect((name,port))
+    while True:
+        message = input('send something')
 
+        #message sent to node
+        send_socket.send(message.encode('ascii'))
+        data = send_socket.recv(1024)
+        print('Received from the server :',str(data.decode('ascii')))
+ 
+        # ask the client whether he wants to continue
+        ans = input('\nDo you want to continue(y/n) :')
+        if ans == 'y':
+            continue
+        else:
+            break
     send_socket.close()
+
 
 if __name__ =="__main__":
     parser = argparse.ArgumentParser()
@@ -53,11 +75,14 @@ if __name__ =="__main__":
         print("Pleace specify if you want to make a connection")
         exit(1)
 
+    #Thread mutex
+    print_lock = threading.Lock()
+
     #setup inbound and outbound ports
     s_inbound,s_outbound = setup_sockets(args.listenport,args.sendport)
 
     # creating thread
-    t1 = threading.Thread(target=inbound, args=(s_inbound,))
+    t1 = threading.Thread(target=inbound, args=(s_inbound,print_lock,))
     connection = False
     if args.make_connection==1:
         print("Connection True")
