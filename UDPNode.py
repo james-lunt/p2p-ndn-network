@@ -5,7 +5,6 @@ import random
 bufferSize  = 1024
 
 ########### Socket Setup #########
-
 def setup_sockets(listen_port,send_port):
     listen_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
     send_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
@@ -16,22 +15,16 @@ def setup_sockets(listen_port,send_port):
 
 
 ########## Outbound #############
+#Connects to port once one is listening
 def outbound(send_socket, address, node_connection_list):
     while True:
         interest = input('Ask the network for information: ') 
         bytesToSend = str.encode(interest)
-        # Send to server using created UDP socket
-        #NextNode = (address, int(random.choice(node_connection_list)))
-        NextNode = (address, int(node_connection_list[0]))
-        send_socket.sendto(bytesToSend, NextNode)
+        port = int(random.choice(node_connection_list))
+        send_socket.sendto(bytesToSend,(address,port))
         msgFromServer = send_socket.recvfrom(bufferSize)
-        msg = "Message from Server {}".format(msgFromServer[0])
+        msg = "Message from Server {}".format(msgFromServer[0].decode())
         print(msg)
-        ans = input('\nDo you want to send another interest? (y/n): ')
-        if ans == 'y':
-            continue
-        else:
-            break
 
 
 ########## Inbound ##############
@@ -45,10 +38,7 @@ def inbound(listen_socket):
         clientMsg = "Message from Client:{}".format(message)
         clientIP  = "Client IP Address:{}".format(address)
 
-        #print(clientMsg)
-        #print(clientIP)
-        # Sending a reply to client
-        msgFromServer = "Hello UDP Client"
+        msgFromServer = "Received Interest"
         bytesToSend = str.encode(msgFromServer)
 
 
@@ -69,8 +59,6 @@ class p2p_node():
 
         # creating thread
         t1 = threading.Thread(target=inbound, args=(s_inbound,))
-
-        #If this node is the first in the network then it should not try to make a connection
         t2 = threading.Thread(target=outbound, args=(s_outbound,'rasp-014',node_connection_list,))
 
         # starting thread 1
