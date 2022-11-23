@@ -1,4 +1,4 @@
-from node import p2p_node
+from UDPNode import p2p_node
 import argparse
 
 if __name__ =="__main__":
