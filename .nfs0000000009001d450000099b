@@ -1,0 +1,512 @@
+[
+    {
+        "/divers/diver1/light": [
+            33001,
+            33002
+        ]
+    },
+    {
+        "/divers/diver1/oxygen": [
+            33003,
+            33004
+        ]
+    },
+    {
+        "/divers/diver1/position": [
+            33005,
+            33006
+        ]
+    },
+    {
+        "/divers/diver1/pressure": [
+            33007,
+            33008
+        ]
+    },
+    {
+        "/divers/diver1/radar": [
+            33009,
+            33010
+        ]
+    },
+    {
+        "/divers/diver1/heart rate": [
+            33011,
+            33012
+        ]
+    },
+    {
+        "/divers/diver1/battery": [
+            33013,
+            33014
+        ]
+    },
+    {
+        "/divers/diver1/danger alert": [
+            33015,
+            33016
+        ]
+    },
+    {
+        "/divers/diver1/notifier": [
+            33017,
+            33018
+        ]
+    },
+    {
+        "/divers/diver2/light": [
+            33019,
+            33020
+        ]
+    },
+    {
+        "/divers/diver2/oxygen": [
+            33021,
+            33022
+        ]
+    },
+    {
+        "/divers/diver2/position": [
+            33023,
+            33024
+        ]
+    },
+    {
+        "/divers/diver2/pressure": [
+            33025,
+            33026
+        ]
+    },
+    {
+        "/divers/diver2/radar": [
+            33027,
+            33028
+        ]
+    },
+    {
+        "/divers/diver2/heart rate": [
+            33029,
+            33030
+        ]
+    },
+    {
+        "/divers/diver2/battery": [
+            33031,
+            33032
+        ]
+    },
+    {
+        "/divers/diver2/danger alert": [
+            33033,
+            33034
+        ]
+    },
+    {
+        "/divers/diver2/notifier": [
+            33035,
+            33036
+        ]
+    },
+    {
+        "/divers/diver3/light": [
+            33037,
+            33038
+        ]
+    },
+    {
+        "/divers/diver3/oxygen": [
+            33039,
+            33040
+        ]
+    },
+    {
+        "/divers/diver3/position": [
+            33041,
+            33042
+        ]
+    },
+    {
+        "/divers/diver3/pressure": [
+            33043,
+            33044
+        ]
+    },
+    {
+        "/divers/diver3/radar": [
+            33045,
+            33046
+        ]
+    },
+    {
+        "/divers/diver3/heart rate": [
+            33047,
+            33048
+        ]
+    },
+    {
+        "/divers/diver3/battery": [
+            33049,
+            33050
+        ]
+    },
+    {
+        "/divers/diver3/danger alert": [
+            33051,
+            33052
+        ]
+    },
+    {
+        "/divers/diver3/notifier": [
+            33053,
+            33054
+        ]
+    },
+    {
+        "/divers/diver4/light": [
+            33055,
+            33056
+        ]
+    },
+    {
+        "/divers/diver4/oxygen": [
+            33057,
+            33058
+        ]
+    },
+    {
+        "/divers/diver4/position": [
+            33059,
+            33060
+        ]
+    },
+    {
+        "/divers/diver4/pressure": [
+            33061,
+            33062
+        ]
+    },
+    {
+        "/divers/diver4/radar": [
+            33063,
+            33064
+        ]
+    },
+    {
+        "/divers/diver4/heart rate": [
+            33065,
+            33066
+        ]
+    },
+    {
+        "/divers/diver4/battery": [
+            33067,
+            33068
+        ]
+    },
+    {
+        "/divers/diver4/danger alert": [
+            33069,
+            33070
+        ]
+    },
+    {
+        "/divers/diver4/notifier": [
+            33071,
+            33072
+        ]
+    },
+    {
+        "/divers/diver5/light": [
+            33073,
+            33074
+        ]
+    },
+    {
+        "/divers/diver5/oxygen": [
+            33075,
+            33076
+        ]
+    },
+    {
+        "/divers/diver5/position": [
+            33077,
+            33078
+        ]
+    },
+    {
+        "/divers/diver5/pressure": [
+            33079,
+            33080
+        ]
+    },
+    {
+        "/divers/diver5/radar": [
+            33081,
+            33082
+        ]
+    },
+    {
+        "/divers/diver5/heart rate": [
+            33083,
+            33084
+        ]
+    },
+    {
+        "/divers/diver5/battery": [
+            33085,
+            33086
+        ]
+    },
+    {
+        "/divers/diver5/danger alert": [
+            33087,
+            33088
+        ]
+    },
+    {
+        "/divers/diver5/notifier": [
+            33089,
+            33090
+        ]
+    },
+    {
+        "/scientists/scientist1/ship recogniser": [
+            33091,
+            33092
+        ]
+    },
+    {
+        "/scientists/scientist1/fauna recogniser": [
+            33093,
+            33094
+        ]
+    },
+    {
+        "/scientists/scientist1/power optimisation": [
+            33095,
+            33096
+        ]
+    },
+    {
+        "/scientists/scientist1/wind power": [
+            33097,
+            33098
+        ]
+    },
+    {
+        "/scientists/scientist1/wind direction": [
+            33099,
+            33100
+        ]
+    },
+    {
+        "/scientists/scientist1/temperature": [
+            33101,
+            33102
+        ]
+    },
+    {
+        "/scientists/scientist1/precipitation": [
+            33103,
+            33104
+        ]
+    },
+    {
+        "/scientists/scientist1/diver alert": [
+            33105,
+            33106
+        ]
+    },
+    {
+        "/scientists/scientist2/ship recogniser": [
+            33107,
+            33108
+        ]
+    },
+    {
+        "/scientists/scientist2/fauna recogniser": [
+            33109,
+            33110
+        ]
+    },
+    {
+        "/scientists/scientist2/power optimisation": [
+            33111,
+            33112
+        ]
+    },
+    {
+        "/scientists/scientist2/wind power": [
+            33113,
+            33114
+        ]
+    },
+    {
+        "/scientists/scientist2/wind direction": [
+            33115,
+            33116
+        ]
+    },
+    {
+        "/scientists/scientist2/temperature": [
+            33117,
+            33118
+        ]
+    },
+    {
+        "/scientists/scientist2/precipitation": [
+            33119,
+            33120
+        ]
+    },
+    {
+        "/scientists/scientist2/diver alert": [
+            33121,
+            33122
+        ]
+    },
+    {
+        "/scientists/scientist3/ship recogniser": [
+            33123,
+            33124
+        ]
+    },
+    {
+        "/scientists/scientist3/fauna recogniser": [
+            33125,
+            33126
+        ]
+    },
+    {
+        "/scientists/scientist3/power optimisation": [
+            33127,
+            33128
+        ]
+    },
+    {
+        "/scientists/scientist3/wind power": [
+            33129,
+            33130
+        ]
+    },
+    {
+        "/scientists/scientist3/wind direction": [
+            33131,
+            33132
+        ]
+    },
+    {
+        "/scientists/scientist3/temperature": [
+            33133,
+            33134
+        ]
+    },
+    {
+        "/scientists/scientist3/precipitation": [
+            33135,
+            33136
+        ]
+    },
+    {
+        "/scientists/scientist3/diver alert": [
+            33137,
+            33138
+        ]
+    },
+    {
+        "/scientists/scientist4/ship recogniser": [
+            33139,
+            33140
+        ]
+    },
+    {
+        "/scientists/scientist4/fauna recogniser": [
+            33141,
+            33142
+        ]
+    },
+    {
+        "/scientists/scientist4/power optimisation": [
+            33143,
+            33144
+        ]
+    },
+    {
+        "/scientists/scientist4/wind power": [
+            33145,
+            33146
+        ]
+    },
+    {
+        "/scientists/scientist4/wind direction": [
+            33147,
+            33148
+        ]
+    },
+    {
+        "/scientists/scientist4/temperature": [
+            33149,
+            33150
+        ]
+    },
+    {
+        "/scientists/scientist4/precipitation": [
+            33151,
+            33152
+        ]
+    },
+    {
+        "/scientists/scientist4/diver alert": [
+            33153,
+            33154
+        ]
+    },
+    {
+        "/scientists/scientist5/ship recogniser": [
+            33155,
+            33156
+        ]
+    },
+    {
+        "/scientists/scientist5/fauna recogniser": [
+            33157,
+            33158
+        ]
+    },
+    {
+        "/scientists/scientist5/power optimisation": [
+            33159,
+            33160
+        ]
+    },
+    {
+        "/scientists/scientist5/wind power": [
+            33161,
+            33162
+        ]
+    },
+    {
+        "/scientists/scientist5/wind direction": [
+            33163,
+            33164
+        ]
+    },
+    {
+        "/scientists/scientist5/temperature": [
+            33165,
+            33166
+        ]
+    },
+    {
+        "/scientists/scientist5/precipitation": [
+            33167,
+            33168
+        ]
+    },
+    {
+        "/scientists/scientist5/diver alert": [
+            33169,
+            33170
+        ]
+    }
+]
