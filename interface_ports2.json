@@ -1,0 +1,1184 @@
+[
+    {
+        "/divers/diver1": [
+            {
+                "listen port": 33001,
+                "send port": 33002,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver3",
+                    "/divers/diver4",
+                    "/scientists/scientist1"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver1/light": [
+            {
+                "listen port": 33003,
+                "send port": 33004,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver1/oxygen": [
+            {
+                "listen port": 33005,
+                "send port": 33006,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver1/position": [
+            {
+                "listen port": 33007,
+                "send port": 33008,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver1/pressure": [
+            {
+                "listen port": 33009,
+                "send port": 33010,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver1/radar": [
+            {
+                "listen port": 33011,
+                "send port": 33012,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver1/heart rate": [
+            {
+                "listen port": 33013,
+                "send port": 33014,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver1/battery": [
+            {
+                "listen port": 33015,
+                "send port": 33016,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver1/danger alert": [
+            {
+                "listen port": 33017,
+                "send port": 33018,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver1/notifier": [
+            {
+                "listen port": 33019,
+                "send port": 33020,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver1"
+            }
+        ]
+    },
+    {
+        "/divers/diver2": [
+            {
+                "listen port": 33021,
+                "send port": 33022,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver4",
+                    "/divers/diver5",
+                    "/scientists/scientist1",
+                    "/scientists/scientist4"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver2/light": [
+            {
+                "listen port": 33023,
+                "send port": 33024,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver2/oxygen": [
+            {
+                "listen port": 33025,
+                "send port": 33026,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver2/position": [
+            {
+                "listen port": 33027,
+                "send port": 33028,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver2/pressure": [
+            {
+                "listen port": 33029,
+                "send port": 33030,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver2/radar": [
+            {
+                "listen port": 33031,
+                "send port": 33032,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver2/heart rate": [
+            {
+                "listen port": 33033,
+                "send port": 33034,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver2/battery": [
+            {
+                "listen port": 33035,
+                "send port": 33036,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver2/danger alert": [
+            {
+                "listen port": 33037,
+                "send port": 33038,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver2/notifier": [
+            {
+                "listen port": 33039,
+                "send port": 33040,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver2"
+            }
+        ]
+    },
+    {
+        "/divers/diver3": [
+            {
+                "listen port": 33041,
+                "send port": 33042,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver1"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver3/light": [
+            {
+                "listen port": 33043,
+                "send port": 33044,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver3/oxygen": [
+            {
+                "listen port": 33045,
+                "send port": 33046,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver3/position": [
+            {
+                "listen port": 33047,
+                "send port": 33048,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver3/pressure": [
+            {
+                "listen port": 33049,
+                "send port": 33050,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver3/radar": [
+            {
+                "listen port": 33051,
+                "send port": 33052,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver3/heart rate": [
+            {
+                "listen port": 33053,
+                "send port": 33054,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver3/battery": [
+            {
+                "listen port": 33055,
+                "send port": 33056,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver3/danger alert": [
+            {
+                "listen port": 33057,
+                "send port": 33058,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver3/notifier": [
+            {
+                "listen port": 33059,
+                "send port": 33060,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver3"
+            }
+        ]
+    },
+    {
+        "/divers/diver4": [
+            {
+                "listen port": 33061,
+                "send port": 33062,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver1",
+                    "/divers/diver2"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver4/light": [
+            {
+                "listen port": 33063,
+                "send port": 33064,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver4/oxygen": [
+            {
+                "listen port": 33065,
+                "send port": 33066,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver4/position": [
+            {
+                "listen port": 33067,
+                "send port": 33068,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver4/pressure": [
+            {
+                "listen port": 33069,
+                "send port": 33070,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver4/radar": [
+            {
+                "listen port": 33071,
+                "send port": 33072,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver4/heart rate": [
+            {
+                "listen port": 33073,
+                "send port": 33074,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver4/battery": [
+            {
+                "listen port": 33075,
+                "send port": 33076,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver4/danger alert": [
+            {
+                "listen port": 33077,
+                "send port": 33078,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver4/notifier": [
+            {
+                "listen port": 33079,
+                "send port": 33080,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver4"
+            }
+        ]
+    },
+    {
+        "/divers/diver5": [
+            {
+                "listen port": 33081,
+                "send port": 33082,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver2",
+                    "/scientists/scientist2"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver5/light": [
+            {
+                "listen port": 33083,
+                "send port": 33084,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/divers/diver5/oxygen": [
+            {
+                "listen port": 33085,
+                "send port": 33086,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/divers/diver5/position": [
+            {
+                "listen port": 33087,
+                "send port": 33088,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/divers/diver5/pressure": [
+            {
+                "listen port": 33089,
+                "send port": 33090,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/divers/diver5/radar": [
+            {
+                "listen port": 33091,
+                "send port": 33092,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/divers/diver5/heart rate": [
+            {
+                "listen port": 33093,
+                "send port": 33094,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/divers/diver5/battery": [
+            {
+                "listen port": 33095,
+                "send port": 33096,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/divers/diver5/danger alert": [
+            {
+                "listen port": 33097,
+                "send port": 33098,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/divers/diver5/notifier": [
+            {
+                "listen port": 33099,
+                "send port": 33100,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": "/divers/diver5"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1": [
+            {
+                "listen port": 33101,
+                "send port": 33102,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/scientists/scientist3",
+                    "/scientists/scientist4",
+                    "/divers/diver1",
+                    "/divers/diver2"
+                ]
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1/ship recogniser": [
+            {
+                "listen port": 33103,
+                "send port": 33104,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist1"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1/fauna recogniser": [
+            {
+                "listen port": 33105,
+                "send port": 33106,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist1"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1/power optimisation": [
+            {
+                "listen port": 33107,
+                "send port": 33108,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist1"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1/wind power": [
+            {
+                "listen port": 33109,
+                "send port": 33110,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist1"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1/wind direction": [
+            {
+                "listen port": 33111,
+                "send port": 33112,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist1"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1/temperature": [
+            {
+                "listen port": 33113,
+                "send port": 33114,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist1"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1/precipitation": [
+            {
+                "listen port": 33115,
+                "send port": 33116,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist1"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist1/diver alert": [
+            {
+                "listen port": 33117,
+                "send port": 33118,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist1"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2": [
+            {
+                "listen port": 33119,
+                "send port": 33120,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/scientists/scientist3",
+                    "/scientists/scientist4",
+                    "/divers/diver1",
+                    "/divers/diver2"
+                ]
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2/ship recogniser": [
+            {
+                "listen port": 33121,
+                "send port": 33122,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist2"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2/fauna recogniser": [
+            {
+                "listen port": 33123,
+                "send port": 33124,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist2"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2/power optimisation": [
+            {
+                "listen port": 33125,
+                "send port": 33126,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist2"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2/wind power": [
+            {
+                "listen port": 33127,
+                "send port": 33128,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist2"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2/wind direction": [
+            {
+                "listen port": 33129,
+                "send port": 33130,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist2"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2/temperature": [
+            {
+                "listen port": 33131,
+                "send port": 33132,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist2"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2/precipitation": [
+            {
+                "listen port": 33133,
+                "send port": 33134,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist2"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist2/diver alert": [
+            {
+                "listen port": 33135,
+                "send port": 33136,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist2"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3": [
+            {
+                "listen port": 33137,
+                "send port": 33138,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/scientists/scientist3",
+                    "/scientists/scientist4",
+                    "/divers/diver1",
+                    "/divers/diver2"
+                ]
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3/ship recogniser": [
+            {
+                "listen port": 33139,
+                "send port": 33140,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist3"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3/fauna recogniser": [
+            {
+                "listen port": 33141,
+                "send port": 33142,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist3"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3/power optimisation": [
+            {
+                "listen port": 33143,
+                "send port": 33144,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist3"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3/wind power": [
+            {
+                "listen port": 33145,
+                "send port": 33146,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist3"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3/wind direction": [
+            {
+                "listen port": 33147,
+                "send port": 33148,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist3"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3/temperature": [
+            {
+                "listen port": 33149,
+                "send port": 33150,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist3"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3/precipitation": [
+            {
+                "listen port": 33151,
+                "send port": 33152,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist3"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist3/diver alert": [
+            {
+                "listen port": 33153,
+                "send port": 33154,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist3"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4": [
+            {
+                "listen port": 33155,
+                "send port": 33156,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/scientists/scientist3",
+                    "/scientists/scientist4",
+                    "/divers/diver1",
+                    "/divers/diver2"
+                ]
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4/ship recogniser": [
+            {
+                "listen port": 33157,
+                "send port": 33158,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist4"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4/fauna recogniser": [
+            {
+                "listen port": 33159,
+                "send port": 33160,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist4"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4/power optimisation": [
+            {
+                "listen port": 33161,
+                "send port": 33162,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist4"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4/wind power": [
+            {
+                "listen port": 33163,
+                "send port": 33164,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist4"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4/wind direction": [
+            {
+                "listen port": 33165,
+                "send port": 33166,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist4"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4/temperature": [
+            {
+                "listen port": 33167,
+                "send port": 33168,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist4"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4/precipitation": [
+            {
+                "listen port": 33169,
+                "send port": 33170,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist4"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist4/diver alert": [
+            {
+                "listen port": 33171,
+                "send port": 33172,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist4"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5": [
+            {
+                "listen port": 33173,
+                "send port": 33174,
+                "address": "rasp-014"
+            },
+            {
+                "neighbors": [
+                    "/scientists/scientist3",
+                    "/scientists/scientist4",
+                    "/divers/diver1",
+                    "/divers/diver2"
+                ]
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5/ship recogniser": [
+            {
+                "listen port": 33175,
+                "send port": 33176,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist5"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5/fauna recogniser": [
+            {
+                "listen port": 33177,
+                "send port": 33178,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist5"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5/power optimisation": [
+            {
+                "listen port": 33179,
+                "send port": 33180,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist5"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5/wind power": [
+            {
+                "listen port": 33181,
+                "send port": 33182,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist5"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5/wind direction": [
+            {
+                "listen port": 33183,
+                "send port": 33184,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist5"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5/temperature": [
+            {
+                "listen port": 33185,
+                "send port": 33186,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist5"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5/precipitation": [
+            {
+                "listen port": 33187,
+                "send port": 33188,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist5"
+            }
+        ]
+    },
+    {
+        "/scientists/scientist5/diver alert": [
+            {
+                "listen port": 33189,
+                "send port": 33190,
+                "address": "rasp-045"
+            },
+            {
+                "neighbors": "/scientists/scientist5"
+            }
+        ]
+    }
+]

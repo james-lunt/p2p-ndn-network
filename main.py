@@ -3,8 +3,7 @@ import argparse
 
 if __name__ =="__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--listenport', help='Listen port', type=int)
-    parser.add_argument('--sendport', help='Send port', type=int)
+    parser.add_argument('--name', help='Listen port', type=int)
     parser.add_argument('--connection-list', help='List ports possible to connect to seperated by commas', type=str)
     args = parser.parse_args()
 
