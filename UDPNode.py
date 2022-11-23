@@ -13,9 +13,8 @@ def setup_sockets(listen_port,send_port):
     send_socket.bind(('',send_port))
     return listen_socket,send_socket
 
-
 ########## Outbound #############
-#Connects to port once one is listening
+#Send interest packet
 def outbound(send_socket, address, node_connection_list):
     while True:
         interest = input('Ask the network for information: ') 
@@ -26,23 +25,31 @@ def outbound(send_socket, address, node_connection_list):
         msg = "Message from Server {}".format(msgFromServer[0].decode())
         print(msg)
 
+#Broadcast Data packet
+def send_data(send_socket, address, node_connection_list, data):
+    bytesToSend = str.encode(data)
+    for port in node_connection_list:
+        send_socket.sendto(bytesToSend, (address,port))
 
 ########## Inbound ##############
 # Listen for incoming datagrams
-def inbound(listen_socket):
+def inbound(send_socket, listen_socket, address, node_connection_list):
     while(True):
         bytesAddressPair = listen_socket.recvfrom(bufferSize)
         message = bytesAddressPair[0]
-        address = bytesAddressPair[1]
+        rcv_address = bytesAddressPair[1]
 
         clientMsg = "Message from Client:{}".format(message)
-        clientIP  = "Client IP Address:{}".format(address)
+        clientIP  = "Client IP Address:{}".format(rcv_address)
+
+        if message.decode() == "d":
+            send_data(send_socket,address,node_connection_list)
 
         msgFromServer = "Received Interest"
         bytesToSend = str.encode(msgFromServer)
 
 
-        listen_socket.sendto(bytesToSend, address)
+        listen_socket.sendto(bytesToSend, rcv_address)
 
 class p2p_node():
     def __init__(self,listen_port,send_port, connection_list):
@@ -58,7 +65,7 @@ class p2p_node():
         s_inbound,s_outbound = setup_sockets(self.listen_port,self.send_port)
 
         # creating thread
-        t1 = threading.Thread(target=inbound, args=(s_inbound,))
+        t1 = threading.Thread(target=inbound, args=(s_inbound,s_outbound, 'rasp-014', node_connection_list))
         t2 = threading.Thread(target=outbound, args=(s_outbound,'rasp-014',node_connection_list,))
 
         # starting thread 1
