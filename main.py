@@ -1,4 +1,4 @@
-from UDPNode import p2p_node
+from TCPNode1 import p2p_node1
 from NodeQingli import Router
 import Interfaces
 import argparse
@@ -80,9 +80,8 @@ if __name__ =="__main__":
         print("Please specify node name")
         exit(1)
 
-    node = p2p_node(args.name)
     router = Router()
     interface = assign_class(args.name)
-    print(interface)
+    node = p2p_node1(args.name,router,interface)
     node.run()
     

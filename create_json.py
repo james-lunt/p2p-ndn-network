@@ -28,7 +28,7 @@ for diver in Divers:
     send_port += 2
     neighbor_itertator +=1
     for sensor in DiverSensors:
-        json_array.append({"/" + Networks[0] + "/" + diver + "/" + sensor : [{"listen port": listen_port,"send port": send_port,"address": Addresses[0]},{"neighbors" : diver_name}]})
+        json_array.append({"/" + Networks[0] + "/" + diver + "/" + sensor : [{"listen port": listen_port,"send port": send_port,"address": Addresses[0]},{"neighbors" : [diver_name]}]})
         listen_port += 2
         send_port += 2
 
@@ -39,7 +39,7 @@ for scientist in Scientists:
     listen_port += 2
     send_port += 2
     for sensor in ScientistSensors:
-        json_array.append({"/" + Networks[1] + "/" + scientist + "/" + sensor : [{"listen port": listen_port,"send port": send_port,"address": Addresses[1]},{"neighbors" : scientist_name}]})
+        json_array.append({"/" + Networks[1] + "/" + scientist + "/" + sensor : [{"listen port": listen_port,"send port": send_port,"address": Addresses[1]},{"neighbors" : [scientist_name]}]})
         listen_port += 2
         send_port += 2
 
@@ -47,7 +47,7 @@ for scientist in Scientists:
 with open('interface_ports2.json', 'w') as f:
   json.dump(json_array, f, indent=4)
 
-"""
+""""
 file = open('interface_ports.json')
 data = json.load(file)
 network_details = data[0]["/divers/diver1/light"]

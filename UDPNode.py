@@ -2,9 +2,17 @@ import socket
 import threading
 import random
 import json
-import Interfaces
+
 
 bufferSize  = 1024
+file = open('interface_ports2.json')
+references = json.load(file)
+
+
+def find_port(name):
+    for i in range(len(references)):
+        if(name == list(references[i].keys())[0]):
+            return i
 
 ########### Setup #########
 def setup_sockets(listen_port,send_port):
@@ -15,30 +23,23 @@ def setup_sockets(listen_port,send_port):
     send_socket.bind(('',send_port))
     return listen_socket,send_socket
 
-# Assign class based on interface        
-def assign_class(node_interface):
-    split_interface = node_interface.split('/')
-    length_interface = len(split_interface)
-
-    #If actuator or sensor
-    if length_interface == 4:
-        return class_dict[split_interface[length_interface]]
-    #If diver or scientist
-    else:
-        return class_dict[split_interface[1]]
-    
-
 ########## Outbound #############
 #Send interest packet
-def outbound(send_socket, address, node_connection_list):
+def outbound(send_socket, address, node_connection_list,lock):
     while True:
         interest = input('Ask the network for information: ') 
         bytesToSend = str.encode(interest)
-        port = int(random.choice(node_connection_list))
+        #print(node_connection_list)
+        neighbor = str(random.choice(node_connection_list))
+        #print(neighbor)
+        port = references[find_port(neighbor)][neighbor][0]["listen port"]
+        lock.acquire()
         send_socket.sendto(bytesToSend,(address,port))
-        msgFromServer = send_socket.recvfrom(bufferSize)
-        msg = "Message from Server {}".format(msgFromServer[0].decode())
-        print(msg)
+        lock.release()
+        with open('log.txt', 'a') as f:
+            f.write('Sent')
+        #msgFromServer = send_socket.recvfrom(bufferSize)
+        #msg = "Message from Server {}".format(msgFromServer[0].decode())
 
 #Send Data packet back to all neighbors
 def send_data(send_socket, address, node_connection_list, data):
@@ -48,49 +49,60 @@ def send_data(send_socket, address, node_connection_list, data):
 
 ########## Inbound ##############
 # Listen for incoming datagrams
-def inbound(send_socket, listen_socket, address, node_connection_list):
+def inbound(send_socket, listen_socket, address, node_connection_list,lock):
     while(True):
+        lock.acquire()
+        print("LISTENING")
         bytesAddressPair = listen_socket.recvfrom(bufferSize)
         message = bytesAddressPair[0]
         rcv_address = bytesAddressPair[1]
+        print(message.decode())
+        lock.release()
+        with open('log.txt', 'a') as f:
+            f.write(message.decode())
 
         clientMsg = "Message from Client:{}".format(message)
         clientIP  = "Client IP Address:{}".format(rcv_address)
 
-        if message.decode() == "d":
-            send_data(send_socket,address,node_connection_list)
-
+        if message.decode()[0] == "/":
+            with open('log.txt', 'a') as f:
+                 f.write('interest')
+        else:
+            with open('log.txt', 'a') as f:
+                 f.write('data')
+        """
         msgFromServer = "Received Interest"
         bytesToSend = str.encode(msgFromServer)
+        """
 
 
-        listen_socket.sendto(bytesToSend, rcv_address)
+        #listen_socket.sendto(bytesToSend, rcv_address)
 
 class p2p_node():
-    def __init__(self,node_interface):
-        file = open('interface_ports2.json')
-        data = json.load(file)
+    def __init__(self,name,router,interface):
+        #Print lock
+        self.lock = threading.Lock()
+
+        #Set router and interface class
+        self.router = router
+        self.interface = interface
 
         #Find network details from json
-        index=0
-        for i in range(len(data)):
-            if(node_interface == list(data[i].keys())[0]):
-                index = i        
-
-        network_details = data[index][node_interface]
+        index=find_port(name)   
+        network_details = references[index][name]
         self.listen_port = network_details[0]["listen port"]
         self.send_port = network_details[0]["send port"]
         self.address = network_details[0]["address"]
         self.neighbors = network_details[1]["neighbors"]
-        #self.device = assign_class(node_interface)
     
     def run(self):
+
         #setup inbound and outbound ports
         s_inbound,s_outbound = setup_sockets(self.listen_port,self.send_port)
 
         # creating thread
-        t1 = threading.Thread(target=inbound, args=(s_inbound,s_outbound, self.address, self.neighbors,))
-        t2 = threading.Thread(target=outbound, args=(s_outbound,self.address,self.neighbors,))
+        t1 = threading.Thread(target=inbound, args=(s_inbound,s_outbound, self.address, self.neighbors,self.lock,))
+        t2 = threading.Thread(target=outbound, args=(s_outbound,self.address,self.neighbors,self.lock,))
 
         # starting thread 1
         t1.start()
