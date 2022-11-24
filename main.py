@@ -67,9 +67,9 @@ def assign_class(node_interface):
     #If diver or scientist
     else:
         if(split_interface[1] == 'scientists'):
-            return Interfaces.Base()
+            return Interfaces.Base(node_interface)
         elif(split_interface[1] == 'divers'):
-            return Interfaces.Diver()
+            return Interfaces.Diver(node_interface)
 
 if __name__ =="__main__":
     parser = argparse.ArgumentParser()

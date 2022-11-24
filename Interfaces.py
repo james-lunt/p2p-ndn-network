@@ -166,19 +166,15 @@ class Alert():
             self.alert[2] = 1
 
 class Base():
-    def __init__(self, fish, allShips):
-        #self.id=id
-        self.fish = fish
-        self.allShips = allShips
+    def __init__(self,id):
+        self.id=id
     #classes of base: Alert, Fauna, Optimizer, Precipitation, ShipRadar, Temperature, WindD, WindS
     def update(self):
         pass
 
 class Diver():
-    def __init__(self, allFish):
-
-        #self.id = id
-        self.allFish = allFish
+    def __init__(self,id):
+        self.id = id
     #classes of diver: Battery, Danger, Heart, Light, Oxygen, Position, Pressure, Radar
     def update(self):
         pass
