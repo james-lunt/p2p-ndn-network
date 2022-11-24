@@ -1,6 +1,7 @@
 import socket
 import threading
 import random
+import json
 
 bufferSize  = 1024
 
@@ -52,21 +53,29 @@ def inbound(send_socket, listen_socket, address, node_connection_list):
         listen_socket.sendto(bytesToSend, rcv_address)
 
 class p2p_node():
-    def __init__(self,listen_port,send_port, connection_list):
-        self.listen_port = listen_port
-        self.send_port = send_port
-        self.connection_list = connection_list
+    def __init__(self,node_interface):
+        file = open('interface_ports2.json')
+        data = json.load(file)
+        network_details = data[0][node_interface]
+        print(network_details)
+        self.listen_port = network_details[0]["listen port"]
+        self.send_port = network_details[0]["send port"]
+        self.address = network_details[0]["address"]
+        self.neighbors = network_details[1]["neighbors"]
+
     
     def run(self):
-        #Makes a list of ports that the node is specified to be able to connect to
-        node_connection_list = self.connection_list.split(",")
+        print(self.address)
+        print(self.listen_port)
+        print(self.send_port)
+        print(self.neighbors)
 
         #setup inbound and outbound ports
         s_inbound,s_outbound = setup_sockets(self.listen_port,self.send_port)
 
         # creating thread
-        t1 = threading.Thread(target=inbound, args=(s_inbound,s_outbound, 'rasp-014', node_connection_list))
-        t2 = threading.Thread(target=outbound, args=(s_outbound,'rasp-014',node_connection_list,))
+        t1 = threading.Thread(target=inbound, args=(s_inbound,s_outbound, self.address, self.neighbors,))
+        t2 = threading.Thread(target=outbound, args=(s_outbound,self.address,self.neighbors,))
 
         # starting thread 1
         t1.start()
