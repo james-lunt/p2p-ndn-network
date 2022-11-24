@@ -5,17 +5,6 @@ import json
 import Interfaces
 
 bufferSize  = 1024
-class_dict = {"oxygen" : Interfaces.Oxygen(), "battery" : Interfaces.Battery(),
-            "radar" : Interfaces.Radar(), "heart rate" : Interfaces.Heart(),
-            "position" : Interfaces.Position(), "pressure" : Interfaces.Pressure(),
-            "light" : Interfaces.Light(), "danger alert" : Interfaces.Danger(),
-            "notifier" : Interfaces.Notifier(), "wind power" : Interfaces.WindS(),
-            "widn direction" : Interfaces.WindD(), "temperature" : Interfaces.Temperature(),
-            "precipitation" : Interfaces.Precipitation(), "ship recogniser" : Interfaces.ShipRadar(),
-            "fauna recogniser" : Interfaces.Fauna(), "power optimisation" : Interfaces.Optimizer(),
-            "diver alert" : Interfaces.Alert(), "scientists" : Interfaces.Base(),
-            "divers" : Interfaces.Diver()}
-
 
 ########### Setup #########
 def setup_sockets(listen_port,send_port):
@@ -93,11 +82,9 @@ class p2p_node():
         self.send_port = network_details[0]["send port"]
         self.address = network_details[0]["address"]
         self.neighbors = network_details[1]["neighbors"]
-        self.device = assign_class(node_interface)
+        #self.device = assign_class(node_interface)
     
     def run(self):
-        print(self.device)
-
         #setup inbound and outbound ports
         s_inbound,s_outbound = setup_sockets(self.listen_port,self.send_port)
 
