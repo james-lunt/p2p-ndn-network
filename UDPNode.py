@@ -56,8 +56,14 @@ class p2p_node():
     def __init__(self,node_interface):
         file = open('interface_ports2.json')
         data = json.load(file)
-        network_details = data[0][node_interface]
-        print(network_details)
+
+        #Find network details from json
+        index=0
+        for i in range(len(data)):
+            if(node_interface == list(data[i].keys())[0]):
+                index = i        
+
+        network_details = data[index][node_interface]
         self.listen_port = network_details[0]["listen port"]
         self.send_port = network_details[0]["send port"]
         self.address = network_details[0]["address"]
