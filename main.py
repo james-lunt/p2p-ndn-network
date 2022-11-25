@@ -1,4 +1,4 @@
-from TCPNode1 import p2p_node1
+from UDPNode1 import p2p_node
 from NodeQingli import Router
 import Interfaces
 import argparse
@@ -82,6 +82,6 @@ if __name__ =="__main__":
 
     router = Router()
     interface = assign_class(args.name)
-    node = p2p_node1(args.name,router,interface)
+    node = p2p_node(args.name,router,interface)
     node.run()
     
