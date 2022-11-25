@@ -3,13 +3,12 @@ import threading
 import random
 import json
 
-
 bufferSize  = 1024
 file = open('interface_ports2.json')
 references = json.load(file)
 
-
-def find_port(name):
+#Finds the node with the given name in the reference json and returns its index
+def find_node(name):
     for i in range(len(references)):
         if(name == list(references[i].keys())[0]):
             return i
@@ -25,15 +24,19 @@ def setup_sockets(listen_port,send_port):
 
 ########## Outbound #############
 #Send interest packet
-def outbound(socket, address, node_connection_list,lock):
+def outbound(socket,node_connection_list,lock):
     while True:
         interest = input('Ask the network for information: ') 
         lock.acquire()
         bytesToSend = str.encode(interest)
+        #Pick a random neighbor
         neighbor = str(random.choice(node_connection_list))
-        port = references[find_port(neighbor)][neighbor][0]["listen port"]
+        #Lookup target port and address
+        node_index = find_node(neighbor)
+        port = references[node_index][neighbor][0]["listen port"]
+        address = references[node_index][neighbor][0]["address"]
+        #Send to neighbor
         socket.sendto(bytesToSend,(address,port))
-        print("sent")
         lock.release()
         msgFromServer = socket.recvfrom(bufferSize)
         print(msgFromServer[0].decode())
@@ -41,21 +44,24 @@ def outbound(socket, address, node_connection_list,lock):
 
 ########## Inbound ##############
 # Listen for incoming datagrams
-def inbound(socket,lock):
+def inbound(socket,name,lock):
     while(True):
         bytesAddressPair = socket.recvfrom(bufferSize)
         lock.acquire()
         message = bytesAddressPair[0]
         rcv_address = bytesAddressPair[1]
-        print("\n" + message.decode())
+        print("\n" + message.decode() + " From ")
         lock.release()
-        msgFromServer = "Received Interest"
+        msgFromServer = name + "Received Interest"
         bytesToSend = str.encode(msgFromServer)
         socket.sendto(bytesToSend, rcv_address)
 
 
 class p2p_node():
     def __init__(self,name,router,interface):
+        #Interface name
+        self.name = name
+
         #Thread Mutex
         self.lock = threading.Lock()
 
@@ -64,7 +70,7 @@ class p2p_node():
         self.interface = interface
 
         #Find network details from json
-        index=find_port(name)   
+        index=find_node(name)   
         network_details = references[index][name]
         self.listen_port = network_details[0]["listen port"]
         self.send_port = network_details[0]["send port"]
@@ -77,8 +83,8 @@ class p2p_node():
         s_inbound,s_outbound = setup_sockets(self.listen_port,self.send_port)
 
         # creating thread
-        t1 = threading.Thread(target=inbound, args=(s_inbound,self.lock))
-        t2 = threading.Thread(target=outbound, args=(s_outbound,self.address,self.neighbors,self.lock))
+        t1 = threading.Thread(target=inbound, args=(s_inbound,self.name,self.lock))
+        t2 = threading.Thread(target=outbound, args=(s_outbound,self.neighbors,self.lock))
 
         # starting thread 1
         t1.start()

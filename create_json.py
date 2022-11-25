@@ -1,6 +1,6 @@
 import json
 
-Addresses = ["rasp-014", "rasp-045"]
+Addresses = ["10.35.70.14", "10.35.70.45"]
 
 Networks = ["divers", "scientists"]
 
