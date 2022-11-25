@@ -1,8 +1,8 @@
 import random
 import threading
 import time
-import NodeQingli
-import UDPNode
+import Router
+import UDPNode1
 
 import numpy as np
 
@@ -12,121 +12,121 @@ def connect_sensor(self, prefix, interface):
 
 class Oxygen():
     def __init__(self):
-        self.oxygen = 100
+        self.data = 100
     def update(self):
         if (random.random() < 0.5):
-            self.oxygen = max(0, self.oxygen-1)
+            self.data = max(0, self.data-1)
 
 class Battery():
     def __init__(self):
-        self.battery = 100
+        self.data = 100
     def update(self):
         if (random.random() < 0.75):
-            self.battery = max(0, self.battery-1)
+            self.data = max(0, self.data-1)
 
 class Radar():
     def __init__(self, fish, position):
-        self.radar = {}
+        self.data = {}
         key = 0
         for f in fish:
             if np.linalg.norm(position - f.position) < 50:
-                self.radar[key] = [round(np.linalg.norm(self.position - f.position)), f.z, f.speed]
+                self.data[key] = [round(np.linalg.norm(self.position - f.position)), f.z, f.speed]
                 key = key + 1
 
 class Heart():
     def __init__(self):
-        self.heart = random.randint(60, 150)
+        self.data = random.randint(60, 150)
     def update(self):
-        self.heart = (self.heart + random.randint(60, 150)) / 2
+        self.data = (self.data + random.randint(60, 150)) / 2
 
 class Position():
     def __init__(self):
         self.x = random.randint(0, 500)
         self.y = random.randint(0, 500)
         self.z = random.randint(0, 200)
-        self.position = np.array((self.x, self.y, self.z))
+        self.data = np.array((self.x, self.y, self.z))
     def update(self):
         self.x = min(500, max(0, self.x + sign(0.5) * random.randint(0, 20)))
         self.y = min(500, max(0, self.y + sign(0.5) * random.randint(0, 20)))
         self.z = min(200, max(0, self.z + sign(0.5) * random.randint(0, 10)))
-        self.position = np.array((self.x, self.y, self.z))
+        self.data = np.array((self.x, self.y, self.z))
 
 class Pressure():
     def __init__(self, position):
-        self.pressure = min(300, position[2] * 285 / 200 + 15 + random.randint(0,15))
+        self.data = min(300, position[2] * 285 / 200 + 15 + random.randint(0,15))
 
 class Light():
     def __init__(self, position):
-        self.light = min(70, position[2] * 70 / 200 + random.randint(0,5))
+        self.data = min(70, position[2] * 70 / 200 + random.randint(0,5))
 
 class Danger():
     def __init__(self, fish, oxygen):
-        self.danger = 0
+        self.data = 0
         if (len(fish) > 2 or oxygen < 50):
-            self.danger = 1
+            self.data = 1
         if (oxygen < 25):
-            self.danger = 2
+            self.data = 2
 
 class Notifier():
     pass
 
 class WindS():
     def __init__(self):
-        self.winds = random.randint(0,70)
+        self.data = random.randint(0,70)
     def update(self):
         new = random.randint(0,70)
-        if (abs(new - self.winds) > 42):
-            self.winds = round((self.winds + new) / 3)
-        elif (abs(new - self.winds) > 21):
-            self.winds = round((self.winds + new) / 2)
+        if (abs(new - self.data) > 42):
+            self.data = round((self.data + new) / 3)
+        elif (abs(new - self.data) > 21):
+            self.data = round((self.data + new) / 2)
         else:
-            self.winds = new
+            self.data = new
 
 class WindD():
     def __init__(self):
         directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
-        self.windd = directions[random.randint(0,7)]
+        self.data = directions[random.randint(0,7)]
     def update(self):
         if (random.random() < 0.5):
-            self.windd = directions[(random.randint(0, 7) + sign(0.5)) % 8]
+            self.data = directions[(random.randint(0, 7) + sign(0.5)) % 8]
 
 class Temperature():
     def __init__(self):
-        self.temperature = random.randint(12, 24)
+        self.data = random.randint(12, 24)
     def update(self):
         new = random.randint(12, 24)
         if (abs(new - self.winds) > 6):
-            self.temperature = round((self.temperature + new) / 2.3)
+            self.data = round((self.data + new) / 2.3)
         elif (abs(new - self.winds) > 3):
-            self.temperature = round((self.temperatire + new) / 2)
+            self.data = round((self.data + new) / 2)
         else:
-            self.temperature = new
+            self.data = new
 
 class Precipitation():
     def __init__(self):
-        self.precipitation = 0
+        self.data = 0
     def update(self):
-        if (self.precipitation == 0 and random.random() > 0.8):
-            self.precipitation = random.randint(1, 20)
-        if (self.precipitation != 0):
+        if (self.data == 0 and random.random() > 0.8):
+            self.data = random.randint(1, 20)
+        if (self.data != 0):
             if (random.random() < 0.8):
                 new = random.randint(1,20)
-                if (abs(new - self.precipitation) > 12):
-                    self.precipitation = round((self.precipitation + new) / 2.5)
-                elif (abs(new - self.precipitation) > 6):
-                    self.precipitation = round((self.precipitation + new) / 1.8)
+                if (abs(new - self.data) > 12):
+                    self.data = round((self.data + new) / 2.5)
+                elif (abs(new - self.data) > 6):
+                    self.data = round((self.data + new) / 1.8)
                 else:
-                    self.precipitation = new
+                    self.data = new
             else:
-                self.precipitation = 0
+                self.data = 0
 
 class ShipRadar():
     def __init__(self, ships, position):
-        self.radar = {}
+        self.data = {}
         key = 0
         for s in ships:
             if np.linalg.norm(position - s.position) < 100:
-                self.radar[key] = [round(np.linalg.norm(self.position - s.position)), s.size, s.speed]
+                self.data[key] = [round(np.linalg.norm(position - s.position)), s.size, s.speed]
                 key = key + 1
 
 class Fauna():
@@ -139,36 +139,36 @@ class Fauna():
 
 class Optimizer():
     def __init__(self, battery):
-        self.message = "All OK"
+        self.data = "All OK"
         if (battery < 0.6):
-            self.message = "Turn off photometer."
+            self.data = "Turn off photometer."
         elif (battery < 0.5):
-            self.message = "Turn off barometer."
+            self.data = "Turn off barometer."
         elif (battery < 0.4):
-            self.message = "Turn off fauna radar."
+            self.data = "Turn off fauna radar."
         elif (battery < 0.3):
-            self.message = "Turn off heart rate monitor."
+            self.data = "Turn off heart rate monitor."
 
 class Alert():
     def __init__(self, battery, fish, oxygen, ships):
-        self.alert = np.zeros(3).tolist()
+        self.data = np.zeros(3).tolist()
         if (battery < 50 or oxygen < 50):
-            self.alert[0] = 1
+            self.data[0] = 1
         elif (battery < 20 or oxygen < 20):
-            self.alert[0] = 2
+            self.data[0] = 2
 
         if (fish.count('puffer') > 0 or fish.count('eel') > 0 or fish.count('whale') > 0):
-            self.alert[1] = 1
+            self.data[1] = 1
         elif (fish.count('shark') > 0 or fish.count('sawfish') > 0 or fish.count('swordfish') > 0):
-            self.alert[1] = 2
+            self.data[1] = 2
 
         if (len(ships) > 1):
-            self.alert[2] = 1
+            self.data[2] = 1
 
 class Base():
     def __init__(self,id):
         self.id=id
-    #classes of base: Alert, Fauna, Optimizer, Precipitation, ShipRadar, Temperature, WindD, WindS
+    #classes of base: alert, Fauna, Optimizer, data, ShipRadar, Temperature, WindD, WindS
     def update(self):
         pass
 
