@@ -4,7 +4,7 @@ import random
 import json
 
 bufferSize  = 1024
-file = open('interface_ports2.json')
+file = open('interface_reference.json')
 references = json.load(file)
 
 #Finds the node with the given name in the reference json and returns its index
