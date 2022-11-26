@@ -11,7 +11,7 @@ DiverNeighborLists = [["/divers/diver3","/divers/diver4","/scientists/scientist1
 
 Scientists = ["scientist1", "scientist2", "scientist3","scientist4","scientist5"]
 
-DiverSensors = ["light", "oxygen", "position", "pressure", "radar", "heart rate", "battery", "danger alert", "notifier"]
+DiverSensors = ["light", "oxygen", "position", "pressure", "radar", "heart rate", "battery", "camera"]
 
 ScientistSensors = ["ship recogniser", "fauna recogniser", "power optimisation", "wind power", "wind direction", "temperature", "precipitation", "diver alert"]
 ScientistNeighborList = [["/scientists/scientist3","/scientists/scientist4","/divers/diver1","/divers/diver2"], ["/scientists/scientist3","/divers/diver2","/divers/diver5"],["/scientists/scientist1","/scientists/scientist2","/scientists/scientist4","/scientists/scientist5"], ["/scientists/scientist3"]]
