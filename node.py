@@ -41,16 +41,14 @@ def assign_class(node_interface):
             return Interfaces.Position()
         elif(split_interface[length_interface-1] == 'light'):
             return Interfaces.Light(position)
-        elif(split_interface[length_interface-1] == 'danger alert'):
-            return Interfaces.Danger(fish,oxygen)
         elif(split_interface[length_interface-1] == 'precipitation'):
             return Interfaces.Precipitation()
         elif(split_interface[length_interface-1] == 'ship recogniser'):
             return Interfaces.ShipRadar(ships,position)
         elif(split_interface[length_interface-1] == 'pressure'):
             return Interfaces.Pressure(position)
-        elif(split_interface[length_interface-1] == 'notifier'):
-            return Interfaces.Notifier()
+        elif(split_interface[length_interface-1] == 'camera'):
+            return Interfaces.Camera()
         elif(split_interface[length_interface-1] == 'wind power'):
             return Interfaces.WindS()
         elif(split_interface[length_interface-1] == 'wind direction'):
