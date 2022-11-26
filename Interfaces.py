@@ -59,14 +59,6 @@ class Light():
     def __init__(self, position):
         self.data = min(70, position[2] * 70 / 200 + random.randint(0,5))
 
-class Danger():
-    def __init__(self, fish, oxygen):
-        self.data = 0
-        if (len(fish) > 2 or oxygen < 50):
-            self.data = 1
-        if (oxygen < 25):
-            self.data = 2
-
 class Camera():
     def __init__(self):
         self.data = 0
