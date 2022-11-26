@@ -67,8 +67,12 @@ class Danger():
         if (oxygen < 25):
             self.data = 2
 
-class Notifier():
-    pass
+class Camera():
+    def __init__(self):
+        self.data = 0
+    def update(self):
+        if (random.random() < 0.5):
+            self.data = min(10000, self.data + random.randint(20, 200))
 
 class WindS():
     def __init__(self):
@@ -143,10 +147,12 @@ class Optimizer():
         if (battery < 0.6):
             self.data = "Turn off photometer."
         elif (battery < 0.5):
-            self.data = "Turn off barometer."
+            self.data = "Turn off camera."
         elif (battery < 0.4):
-            self.data = "Turn off fauna radar."
+            self.data = "Turn off barometer."
         elif (battery < 0.3):
+            self.data = "Turn off fauna radar."
+        elif (battery < 0.2):
             self.data = "Turn off heart rate monitor."
 
 class Alert():
@@ -164,6 +170,8 @@ class Alert():
 
         if (len(ships) > 1):
             self.data[2] = 1
+        if (ships.count('large') > 1 or ships.count('medium') > 2):
+            self.data[2] = 2
 
 class Base():
     def __init__(self,id):
