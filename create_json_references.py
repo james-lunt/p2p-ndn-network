@@ -44,7 +44,7 @@ for scientist in Scientists:
         send_port += 2
 
 
-with open('interface_ports2.json', 'w') as f:
+with open('interfaces.json', 'w') as f:
   json.dump(json_array, f, indent=4)
 
 """"

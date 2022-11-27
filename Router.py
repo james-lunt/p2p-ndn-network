@@ -28,10 +28,8 @@ def longestPrefix(str_packet, str_fib):
 
 
 class Router:
-    def __init__(self, name, int_socket, data_socket):
+    def __init__(self, name):
         self.name = name  # device name
-        self.int_socket = int_socket
-        self.data_socket = data_socket
         self.cs = dict()  # name: data: freshness
         self.pit = list(tuple())  # name, ip address, coming interface
         self.fib = list(tuple())  # prefix, ip address, ongoing interface
@@ -163,6 +161,7 @@ class Router:
             # else:
             data_cs = "There is no such value!!"
             return data_cs
+
 
     def fib_client(self, addr, port, packet):
         # Create a socket object

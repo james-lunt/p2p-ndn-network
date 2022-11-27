@@ -167,14 +167,14 @@ class Alert():
 
 class Base():
     def __init__(self,id):
-        self.id=id
+        self.data=id
     #classes of base: alert, Fauna, Optimizer, data, ShipRadar, Temperature, WindD, WindS
     def update(self):
         pass
 
 class Diver():
     def __init__(self,id):
-        self.id = id
+        self.data = id
     #classes of diver: Battery, Danger, Heart, Light, Oxygen, Position, Pressure, Radar
     def update(self):
         pass
