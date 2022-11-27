@@ -56,8 +56,8 @@ class Router:
     def setPit(self, name, interface):  # incoming interface
         self.pit.append((name, interface))
 
-    def popPit(self,name):
-        self.pit.remove(name)
+    def popPit(self,name,interface):
+        self.pit.remove((name,interface))
 
     def getFib(self):
         return self.fib

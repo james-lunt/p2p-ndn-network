@@ -7,8 +7,6 @@ Networks = ["divers", "scientists"]
 Divers = ["diver1","diver2","diver3","diver4","diver5"]
 DiverNeighborList = [["/divers/diver3","/divers/diver4","/scientists/scientist1"], ["/divers/diver4","/divers/diver5","/scientists/scientist1","/scientists/scientist4"], ["/divers/diver1"], ["/divers/diver1","/divers/diver2"], ["/divers/diver2","/scientists/scientist2"]]
 
-DiverNeighborLists = [["/divers/diver3","/divers/diver4","/scientists/scientist1"]]
-
 Scientists = ["scientist1", "scientist2", "scientist3","scientist4","scientist5"]
 
 DiverSensors = ["light", "oxygen", "position", "pressure", "radar", "heart rate", "battery", "camera"]

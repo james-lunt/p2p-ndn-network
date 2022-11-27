@@ -15,6 +15,10 @@ def find_node(name):
         if(name == list(references[i].keys())[0]):
             return i
 
+def get_address(name):
+    network_details = references[0][name]
+    return (network_details[0]["address"],network_details[0]["listen port"])
+
 ########### Setup #########
 def setup_sockets(listen_port,send_port):
     listen_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
@@ -47,17 +51,20 @@ def outbound(socket,router,lock):
 
 
 ########## Inbound ##############
-def handle_packet(router, packet):
+def handle_packet(router, packet,socket):
     name = packet[0]
-    data_requesters = []
     forward_addresses = router.longestPrefix(name,router.getFib)
     #Interest packet
     if len(packet) == 2:
         if name in router.getCS:
             #Produce data packet name : data : freshness
             packet = [name,router.getCS[name],0]
-        else:
+        elif packet not in router.getPit:
             router.setPit(packet)
+        #Forward packet given longest prefix policy
+        for node in forward_addresses():
+            socket.sendto(json.dumps(packet).encode(),node)
+
     #Data packet
     else:
         data = packet[1]
@@ -66,25 +73,23 @@ def handle_packet(router, packet):
         for interest in router.getPit(): 
             if interest[0] == name:
                 router.popPit(interest)
-                #Append interfaces that are requesting the data
-                data_requesters.append(interest[1])
+                #Send data packet to requesters
+                socket.sendto(json.dumps(packet).encode(),get_address(interest[1]))
                 inPit = True
         if inPit:
             router.setCS(name,data)
 
-    return packet,data_requesters,forward_addresses
-
 
 # Listen for incoming datagrams
-def inbound(socket,name,lock):
+def inbound(socket,name,lock,router):
     while(True):
         bytesAddressPair = socket.recvfrom(bufferSize)
         lock.acquire()
         message = bytesAddressPair[0]
         rcv_address = bytesAddressPair[1]
-        print(json.loads(message.decode()))
+        #print(json.loads(message.decode()))
         #print("\n" + json.loads(message.decode()) + " From ")
-        #handle_packet(router,message)
+        handle_packet(router,message,socket)
         lock.release()
         msgFromServer = name + "Received Interest"
         bytesToSend = str.encode(msgFromServer)
@@ -117,7 +122,7 @@ class p2p_node():
         #setup inbound and outbound ports
         s_inbound,s_outbound = setup_sockets(self.listen_port,self.send_port)
         # creating thread
-        t1 = threading.Thread(target=inbound, args=(s_inbound,self.name,self.lock))
+        t1 = threading.Thread(target=inbound, args=(s_inbound,self.name,self.lock,self.router))
         t2 = threading.Thread(target=outbound, args=(s_outbound,self.router,self.lock))
 
         # starting thread 1

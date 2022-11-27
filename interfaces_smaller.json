@@ -1,0 +1,130 @@
+[
+    {
+        "/divers/diver1": [
+            {
+                "listen port": 33001,
+                "send port": 33002,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver3",
+                    "/divers/diver4"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver1/light": [
+            {
+                "listen port": 33003,
+                "send port": 33004,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver1"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver1/oxygen": [
+            {
+                "listen port": 33005,
+                "send port": 33006,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver1"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver2": [
+            {
+                "listen port": 33007,
+                "send port": 33008,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver4",
+                    "/divers/diver5"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver2/light": [
+            {
+                "listen port": 33009,
+                "send port": 33010,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver2"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver2/oxygen": [
+            {
+                "listen port": 33011,
+                "send port": 33012,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver2"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver3": [
+            {
+                "listen port": 33013,
+                "send port": 33014,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver1"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver3/light": [
+            {
+                "listen port": 33015,
+                "send port": 33016,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver3"
+                ]
+            }
+        ]
+    },
+    {
+        "/divers/diver3/oxygen": [
+            {
+                "listen port": 33017,
+                "send port": 33018,
+                "address": "10.35.70.14"
+            },
+            {
+                "neighbors": [
+                    "/divers/diver3"
+                ]
+            }
+        ]
+    }
+]
