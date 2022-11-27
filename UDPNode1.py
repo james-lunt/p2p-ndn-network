@@ -2,12 +2,10 @@ import socket
 import threading
 import random
 import json
-import pickle
 
 bufferSize  = 1024
 file = open('interfaces.json')
 references = json.load(file)
-
 
 #Finds the node with the given name in the reference json and returns its index
 def find_node(name):
@@ -30,19 +28,17 @@ def outbound(socket,router,lock,interface):
     while True:
         interest = input('Ask the network for information: ') 
         lock.acquire()
-        #bytesToSend = str.encode(interest)
         #Send to some neighbor given longest prefix protocol or FIB
         forwarding_list = router.longestPrefix(interest)
         if forwarding_list:
-            neighbor = random.choice(forwarding_list)
+            neighbor = forwarding_list[0]
         else:
             neighbor = random.choice(router.getFib())
         print("Sending to " + neighbor[0])
         socket.sendto(json.dumps((interest, interface)).encode(), (neighbor[1],neighbor[2]))
-        #socket.sendto(json_message.encode(),("rasp-014",33003))
         lock.release()
-        msgFromServer = socket.recvfrom(bufferSize)
-        print(msgFromServer[0].decode())
+        #msgFromServer = socket.recvfrom(bufferSize)
+        #print(msgFromServer[0].decode())
 
 
 ########## Inbound ##############
