@@ -15,10 +15,6 @@ def find_node(name):
         if(name == list(references[i].keys())[0]):
             return i
 
-def get_address(name):
-    network_details = references[0][name]
-    return (network_details[0]["address"],network_details[0]["listen port"])
-
 ########### Setup #########
 def setup_sockets(listen_port,send_port):
     listen_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
@@ -30,21 +26,20 @@ def setup_sockets(listen_port,send_port):
 
 ########## Outbound #############
 #Send interest packet
-def outbound(socket,router,lock):
+def outbound(socket,router,lock,interface):
     while True:
         interest = input('Ask the network for information: ') 
         lock.acquire()
-        json_message = json.dumps([interest])
         #bytesToSend = str.encode(interest)
-        #Pick a random neighbor
-        neighbor = random.choice(router.getFib())
+        #Send to some neighbor given longest prefix protocol or FIB
+        forwarding_list = router.longestPrefix(interest)
+        if forwarding_list:
+            neighbor = random.choice(forwarding_list)
+        else:
+            neighbor = random.choice(router.getFib())
         print("Sending to " + neighbor[0])
-        #Lookup target port and address
-        port = neighbor[2]
-        address = neighbor[1]
-        #Send to neighbor
-        #socket.sendto(interest,(address,port))
-        socket.sendto(json_message.encode(),("rasp-014",33003))
+        socket.sendto(json.dumps((interest, interface)).encode(), (neighbor[1],neighbor[2]))
+        #socket.sendto(json_message.encode(),("rasp-014",33003))
         lock.release()
         msgFromServer = socket.recvfrom(bufferSize)
         print(msgFromServer[0].decode())
@@ -53,7 +48,7 @@ def outbound(socket,router,lock):
 ########## Inbound ##############
 def handle_packet(router, packet,socket):
     name = packet[0]
-    forward_addresses = router.longestPrefix(name,router.getFib)
+    forward_addresses = router.longestPrefix(name,router.getFib())
     #Interest packet
     if len(packet) == 2:
         if name in router.getCS:
@@ -74,11 +69,10 @@ def handle_packet(router, packet,socket):
             if interest[0] == name:
                 router.popPit(interest)
                 #Send data packet to requesters
-                socket.sendto(json.dumps(packet).encode(),get_address(interest[1]))
+                socket.sendto(json.dumps(packet).encode(), router.getAddress(interest[1]))
                 inPit = True
         if inPit:
             router.setCS(name,data)
-
 
 # Listen for incoming datagrams
 def inbound(socket,name,lock,router):
@@ -87,13 +81,11 @@ def inbound(socket,name,lock,router):
         lock.acquire()
         message = bytesAddressPair[0]
         rcv_address = bytesAddressPair[1]
-        #print(json.loads(message.decode()))
-        #print("\n" + json.loads(message.decode()) + " From ")
-        handle_packet(router,message,socket)
-        lock.release()
-        msgFromServer = name + "Received Interest"
+        msgFromServer = name + "Received Message"
         bytesToSend = str.encode(msgFromServer)
         socket.sendto(bytesToSend, rcv_address)
+        handle_packet(router,message,socket)
+        lock.release()
 
 
 class p2p_node():
@@ -123,7 +115,7 @@ class p2p_node():
         s_inbound,s_outbound = setup_sockets(self.listen_port,self.send_port)
         # creating thread
         t1 = threading.Thread(target=inbound, args=(s_inbound,self.name,self.lock,self.router))
-        t2 = threading.Thread(target=outbound, args=(s_outbound,self.router,self.lock))
+        t2 = threading.Thread(target=outbound, args=(s_outbound,self.router,self.lock,self.name))
 
         # starting thread 1
         t1.start()

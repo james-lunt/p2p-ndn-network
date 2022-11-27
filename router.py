@@ -1,5 +1,7 @@
 import json
 
+
+
 class Router:
     def __init__(self, name):
         self.name = name  # device name
@@ -61,35 +63,57 @@ class Router:
 
     def getFib(self):
         return self.fib
+    
+    def getAddress(name,self):
+        for address in self.fib:
+            if name == address[0]:
+                return(address[1],address[2])
 
     # for scalable ????
     def setFib(self, prefix, addr, interface):  # ongoing interface
         t = (prefix, addr, interface)
         self.fib.append(tuple(t))
-
-    # return the longest common prefix of Interest name and a name in fib table
-    def longestPrefix(str_packet, str_fib):
-        re = ''
+    
+    # The longest match between the name of the matched interest packet and the prefix in the fib,
+    # returned with the fib storage format, and not contains urls that do not match at all
+    def longestPrefix(self,str_packet):
+        match_fib = dict()
+        resorted = list()
         # split the url with '/'
         packet_len = len(str_packet.split('/'))
-        fib_len = len(str_fib.split('/'))
-        # get the length of the shorter string
-        loop_len = fib_len if packet_len > fib_len else packet_len
-        prefix_len = 0
-        # print(loop_len)
-        for i in range(loop_len):
-            if str_packet.split('/')[i] == str_fib.split('/')[i]:
-                prefix_len += 1
-            else:
-                break
-        # print(prefix_len)
-        if loop_len == 1:
-            return re
-        else:
-            for i in range(prefix_len):
-                if i != 0:
-                    re += "/" + str_packet.split('/')[i]
-            return re
+        # print(len(self.fib))
+
+        # match how many strings between the packet name and fib
+        for k in range(len(self.fib)):
+            fib_len = len(self.fib[k][0].split('/'))
+            # get the length of the shorter string
+            loop_len = fib_len if packet_len > fib_len else packet_len
+            prefix_len = 0
+            # print(loop_len)
+            for i in range(loop_len):
+                if str_packet.split('/')[i] == self.fib[k][0].split('/')[i]:
+                    prefix_len += 1
+                else:
+                    break
+            # set the largest level if match completely
+            if str_packet == self.fib[k][0]:
+                loop_len = 9999
+            # If matches more than one string, it is added to the dictionary
+            if prefix_len > 1:
+                match_fib[self.fib[k][0]] = loop_len
+
+        # rank the dictionary
+        resorted = sorted(match_fib.items(), key=lambda x: x[1], reverse=True)
+
+        # return the data has the same format with fib table
+        resorted_fib = list(tuple())
+        for i in range(len(resorted)):
+            for k in self.fib:
+                if resorted[i][0] == k[0]:
+                    resorted_fib.append(k)
+        return resorted_fib
+
+
 
 
         
