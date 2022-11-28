@@ -33,7 +33,7 @@ for diver in Divers:
 neighbor_itertator = 0
 for scientist in Scientists:
     scientist_name = "/" + Networks[1] + "/" + scientist
-    json_array.append({scientist_name : [{"listen port": listen_port,"send port": send_port,"address": Addresses[0]},{"neighbors" : ScientistNeighborList[neighbor_itertator]}]})
+    json_array.append({scientist_name : [{"listen port": listen_port,"send port": send_port,"address": Addresses[1]},{"neighbors" : ScientistNeighborList[neighbor_itertator]}]})
     listen_port += 2
     send_port += 2
     for sensor in ScientistSensors:
