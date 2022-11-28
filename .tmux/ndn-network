@@ -1,10 +1,20 @@
-#Run source .tmux/ndn-network to start this
-#tmux attach to control
-#tmux kill-server to shut down
-
 tmux new-session -d -s NDN
-tmux new-window -n d1
-tmux new-window -d -n d2
+tmux new-window -n done
+tmux new-window -d -n d1light
+tmux new-window -d -n d1oxygen
+tmux new-window -d -n dtwo
+tmux new-window -d -n d2light
+tmux new-window -d -n d2oxygen
+tmux new-window -d -n dthree
+tmux new-window -d -n d3light
+tmux new-window -d -n d3oxygen
 tmux send-keys -t NDN:bash "echo Base Control"
-tmux send-keys -t NDN:d1 "python node.py --name /divers/diver1/light" 
-tmux send-keys -t NDN:d2 "python node.py --name /divers/diver2" C-m
+tmux send-keys -t NDN:done "python node.py --name /divers/diver1"
+tmux send-keys -t NDN:d1light "python node.py --name /divers/diver1/light"
+tmux send-keys -t NDN:d1oxygen "python node.py --name /divers/diver1/oxygen" 
+tmux send-keys -t NDN:dtwo "python node.py --name /divers/diver2" 
+tmux send-keys -t NDN:d2light "python node.py --name /divers/diver2/light" 
+tmux send-keys -t NDN:d2oxygen "python node.py --name /divers/diver2/oxygen" 
+tmux send-keys -t NDN:dthree "python node.py --name /divers/diver3" 
+tmux send-keys -t NDN:d3light "python node.py --name /divers/diver3/light" 
+tmux send-keys -t NDN:d3oxygen "python node.py --name /divers/diver3/oxygen" C-m
