@@ -27,7 +27,6 @@ def setup_sockets(listen_port,send_port):
 ########## Update ##############
 def update(interface,router,name):
     while True:
-        print(interface)
         #auxiliaries for the classes that need it
         aux_position = [random.randint(0,500),random.randint(0,500),random.randint(0,200)]
         aux_oxygen = random.randint(0,100)
@@ -58,7 +57,6 @@ def update(interface,router,name):
         #Update content store with data
         router.setCS(name,interface.data)
         time.sleep(10)
-        print(router.getCS())
 
 
 
@@ -70,10 +68,9 @@ def outbound(socket,router,lock,interface):
         lock.acquire()
         #Send to some neighbor given longest prefix protocol or FIB
         neighbor = router.longestPrefix(interest)
-        print(neighbor)
         packet = (interest, interface)
-        print(packet)
-        socket.sendto(json.dumps(packet).encode(), (neighbor[0][1],neighbor[0][2]))
+        router.setPit(interest,interface)
+        socket.sendto(json.dumps(packet).encode(), (neighbor[len(neighbor)-1][1],neighbor[len(neighbor)-1][2]))
         lock.release()
         #msgFromServer = socket.recvfrom(bufferSize)
         #print(msgFromServer[0].decode())
@@ -83,7 +80,6 @@ def outbound(socket,router,lock,interface):
 def handle_packet(router, packet,socket):
     packet = json.loads(packet.decode())
     name = packet[0]
-    print(packet)
     #Interest packet
     if len(packet) == 2:
         interface = packet[1]
@@ -91,8 +87,8 @@ def handle_packet(router, packet,socket):
         if name in router.getCS():
             print("I have the Data!")
             #Produce data packet name : data : freshness
-            address = (interface[1],interface[2])
-            packet = [name,router.getCS()[name],0]
+            address = router.getAddress(interface)
+            packet = (name,router.getCS()[name],0)
             socket.sendto(json.dumps(packet).encode(), address)
             return
         elif packet not in router.getPit():
@@ -100,10 +96,9 @@ def handle_packet(router, packet,socket):
             router.setPit(name,interface)
             #Forward Interest based on longest prefix
             next_node = router.longestPrefix(name)
-            print(next_node)
-            print("Forwarding to ", next_node[0])
+            print("Forwarding to ", next_node[len(next_node)-1])
             packet = (name, router.getLocation()[0])
-            socket.sendto(json.dumps(packet).encode(),(next_node[0][1],next_node[0][2]))
+            socket.sendto(json.dumps(packet).encode(),(next_node[len(next_node)-1][1],next_node[len(next_node)-1][2]))
             return
 
     #Data packet
@@ -115,14 +110,16 @@ def handle_packet(router, packet,socket):
         for interest in router.getPit(): 
             if interest[0] == name:
                 print("Satisfying interest table")
-                router.popPit(interest)
+                router.popPit(interest[0],interest[1])
                 #Send data packet to requesters
-                socket.sendto(json.dumps(packet).encode(), router.getAddress(interest[1]))
+                if interest[1] != router.name:
+                    address = router.getAddress(interest[1])
+                    socket.sendto(json.dumps(packet).encode(), address)
                 inPit = True
-                return
         if inPit:
             print("Updating Content store")
             router.setCS(name,data)
+            print(router.getCS())
             return
         else:
             print("Not in interest table, ignore packet.")
@@ -136,10 +133,10 @@ def inbound(socket,name,lock,router):
         bytesAddressPair = socket.recvfrom(bufferSize)
         lock.acquire()
         message = bytesAddressPair[0]
-        rcv_address = bytesAddressPair[1]
-        msgFromServer = name + "Received Message"
-        bytesToSend = str.encode(msgFromServer)
-        socket.sendto(bytesToSend, rcv_address)
+        #rcv_address = bytesAddressPair[1]
+        #msgFromServer = name + "Received Message"
+        #bytesToSend = str.encode(msgFromServer)
+        #socket.sendto(bytesToSend, rcv_address)
         handle_packet(router,message,socket)
         lock.release()
 
