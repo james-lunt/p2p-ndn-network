@@ -2,6 +2,7 @@ import socket
 import threading
 import random
 import json
+import time
 
 bufferSize  = 1024
 file = open('interfaces.json')
@@ -117,7 +118,12 @@ class p2p_node():
         t1.start()
         # starting thread 2
         t2.start()
-    
+        
+        while True:
+            if (self.interface.__name__ in ['Oxygen', 'Battery', 'Heart', 'Position', 'Camera', 'WindS', 'WindD', 'Temperature', 'Precipitation']):
+                self.interface.update()
+                time.sleep(5)
+             
         # wait until thread 1 is completely executed
         t1.join()
         # wait until thread 2 is completely executed
