@@ -120,9 +120,34 @@ class p2p_node():
         t2.start()
         
         while True:
+            #auxiliaries for the classes that need it
+            aux_position = [random.randint(0,500),random.randint(0,500),random.randint(0,200)]
+            aux_oxygen = random.randint(0,100)
+            aux_battery = random.randint(0,100)
+            aux_fish = []
+            for i in range (random.randint(0,300)):
+                aux_fish.append(Interfaces.Fish())
+            aux_ships = []
+            for i in range (random.randint(0,50)):
+                aux_ships.append(Interfaces.Ship())
+            #updating every 10 seconds
             if (self.interface.__name__ in ['Oxygen', 'Battery', 'Heart', 'Position', 'Camera', 'WindS', 'WindD', 'Temperature', 'Precipitation']):
                 self.interface.update()
-                time.sleep(5)
+            elif (self.interface.__name__ == 'Light'):
+                self.interface = Interfaces.Light(aux_position)
+            elif (self.interface.__name__ == 'Pressure'):
+                self.interface = Interfaces.Pressure(aux_position)
+            elif (self.interface.__name__ == 'Radar'):
+                self.interface = Interfaces.Radar(aux_fish, aux_position)
+            elif (self.interface.__name__ == 'ShipRadar'):
+                self.interface = Interfaces.ShipRadar(aux_ships, aux_position)
+            elif (self.interface.__name__ == 'Fauna'):
+                self.interface = Interfaces.Fauna(aux_fish)
+            elif (self.interface.__name__ == 'Optimizer'):
+                self.interface = Interfaces.Optimizer(aux_battery)
+            elif (self.interface.__name__ == 'Alert'):
+                self.interface = Interfaces.Alert(aux_battery, aux_fish, aux_oxygen, aux_ships)
+            time.sleep(10)
              
         # wait until thread 1 is completely executed
         t1.join()
