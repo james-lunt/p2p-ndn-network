@@ -6,8 +6,16 @@ class Router:
         self.cs = dict()  # name: data: freshness
         self.pit = list(tuple())  # name
         self.fib = list(tuple())  # prefix, ip address, ongoing interface
-        with open("interfaces.json", 'r') as load_f:
+        self.location = list(tuple()) #name, address, listen port, send port
+
+        with open("interfaces_smaller.json", 'r') as load_f:
             load_dict = json.load(load_f)
+        #Set location
+        for i in range(len(load_dict)):
+            if(name == list(load_dict[i].keys())[0]):
+                details = load_dict[i][name]
+                self.setLocation(name,details[0]["address"], details[0]["listen port"],
+                                  details[0]["send port"])
         # get the current device's neighbours
         # print(self.name)
         neighbours_list = list()
@@ -46,8 +54,8 @@ class Router:
         return self.cs
 
     # cache new data
-    def setCS(self, name, data):
-        self.cs[name] = data
+    def setCS(self, name, data, freshness):
+        self.cs[name] = [data,freshness]
 
     def getPit(self):
         return self.pit
@@ -61,9 +69,16 @@ class Router:
 
     def getFib(self):
         return self.fib
+
+    def setLocation(self, name, address, listen_port,send_port):
+        self.location = (name,address,listen_port,send_port)
+
+    def getLocation(self):
+        return self.location
     
-    def getAddress(name,self):
+    def getAddress(self,name):
         for address in self.fib:
+            print(address)
             if name == address[0]:
                 return(address[1],address[2])
 
@@ -79,6 +94,7 @@ class Router:
         resorted = list()
         # split the url with '/'
         packet_len = len(str_packet.split('/'))
+        print(str_packet)
         # print(len(self.fib))
 
         # match how many strings between the packet name and fib
@@ -96,6 +112,9 @@ class Router:
             # set the largest level if match completely
             if str_packet == self.fib[k][0]:
                 loop_len = 9999
+                print(0)
+                print(self.fib[k])
+                return [list(self.fib[k])]
             # If matches more than one string, it is added to the dictionary
             if prefix_len > 1:
                 match_fib[self.fib[k][0]] = loop_len
@@ -107,10 +126,9 @@ class Router:
         resorted_fib = list(tuple())
         for i in range(len(resorted)):
             for k in self.fib:
-                if resorted[i][0] == k[0]:
+                if (resorted[i][0] == k[0]) & (len(k[0].split('/')) != 4):
                     resorted_fib.append(k)
         return resorted_fib
-
 
 
 
