@@ -12,7 +12,7 @@ def create_initial_values():
 
     ships = []
     for i in range (random.randint(0,200)):
-        fish.append(Interfaces.Ship())
+        ships.append(Interfaces.Ship())
 
     battery = random.uniform(0,1)
     position = [random.randint(0,500),random.randint(0,500),random.randint(0,500)]
