@@ -7,16 +7,16 @@ import random
 #Create initial values for this node
 def create_initial_values():
     fish = []
-    for i in range (random.randint(0,200)):
+    for i in range (random.randint(0,300)):
         fish.append(Interfaces.Fish())
 
     ships = []
-    for i in range (random.randint(0,200)):
+    for i in range (random.randint(0,50)):
         ships.append(Interfaces.Ship())
 
-    battery = random.uniform(0,1)
-    position = [random.randint(0,500),random.randint(0,500),random.randint(0,500)]
-    oxygen = random.uniform(0,1)
+    battery = 100
+    position = [random.randint(0,500),random.randint(0,500),random.randint(0,200)]
+    oxygen = 100
 
     return fish,position,oxygen,ships,battery
 
