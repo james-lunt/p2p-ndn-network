@@ -55,7 +55,7 @@ def update(interface,router,name):
         elif (interface.__class__.__name__ == 'Alert'):
             interface = Interfaces.Alert(aux_battery, aux_fish, aux_oxygen, aux_ships)
         #Update content store with data
-        router.setCS(name,interface.data)
+        router.setCS(name,interface.data,time.time())
         time.sleep(10)
 
 
@@ -77,6 +77,15 @@ def outbound(socket,router,lock,interface):
 
 
 ########## Inbound ##############
+def fresh(name, router):
+    if name in router.getCS():
+        if (float(time.time() - router.getCS()[name][1])) > 10.0:
+            print("Stale")
+            return False
+        else:
+            print("Fresh")
+            return True      
+
 def handle_packet(router, packet,socket):
     packet = json.loads(packet.decode())
     name = packet[0]
@@ -84,7 +93,7 @@ def handle_packet(router, packet,socket):
     if len(packet) == 2:
         interface = packet[1]
         print("Interest Packet Received!")
-        if name in router.getCS():
+        if name in router.getCS() and fresh(name,router):
             print("I have the Data!")
             #Produce data packet name : data : freshness
             address = router.getAddress(interface)
@@ -118,7 +127,7 @@ def handle_packet(router, packet,socket):
                 inPit = True
         if inPit:
             print("Updating Content store")
-            router.setCS(name,data)
+            router.setCS(name,data[0],data[1])
             print(router.getCS())
             return
         else:
@@ -133,10 +142,6 @@ def inbound(socket,name,lock,router):
         bytesAddressPair = socket.recvfrom(bufferSize)
         lock.acquire()
         message = bytesAddressPair[0]
-        #rcv_address = bytesAddressPair[1]
-        #msgFromServer = name + "Received Message"
-        #bytesToSend = str.encode(msgFromServer)
-        #socket.sendto(bytesToSend, rcv_address)
         handle_packet(router,message,socket)
         lock.release()
 
