@@ -9,9 +9,9 @@ DiverNeighborList = [["/divers/diver3","/divers/diver4","/scientists/scientist1"
 
 Scientists = ["scientist1", "scientist2", "scientist3","scientist4","scientist5"]
 
-DiverSensors = ["light", "oxygen", "position", "pressure", "radar", "heart rate", "battery", "camera"]
+DiverSensors = ["light", "oxygen", "position", "pressure", "radar", "heartrate", "battery", "camera"]
 
-ScientistSensors = ["ship recogniser", "fauna recogniser", "power optimisation", "wind power", "wind direction", "temperature", "precipitation", "diver alert"]
+ScientistSensors = ["shipradar", "fauna", "optimizer", "winds", "windd", "temperature", "precipitation", "alert"]
 ScientistNeighborList = [["/scientists/scientist3","/scientists/scientist4","/divers/diver1","/divers/diver2"], ["/scientists/scientist3","/divers/diver2","/divers/diver5"],["/scientists/scientist1","/scientists/scientist2","/scientists/scientist4","/scientists/scientist5"], ["/scientists/scientist3"]]
 
 json_array = []
@@ -45,10 +45,3 @@ for scientist in Scientists:
 with open('interfaces.json', 'w') as f:
   json.dump(json_array, f, indent=4)
 
-""""
-file = open('interface_ports.json')
-data = json.load(file)
-network_details = data[0]["/divers/diver1/light"]
-listen_port = network_details[0]["listen port"]
-print(listen_port)
-"""
