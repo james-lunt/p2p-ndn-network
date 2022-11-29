@@ -2,7 +2,6 @@ import random
 
 import numpy as np
 
-# 当前device连接其他device
 def connect_sensor(self, prefix, interface):
     self.router.setPit(prefix, interface)
 
@@ -26,7 +25,7 @@ class Radar():
         key = 0
         for f in fish:
             if np.linalg.norm(position - f.position) < 50:
-                self.data[key] = [round(np.linalg.norm(self.position - f.position)), f.z, f.speed]
+                self.data[key] = [round(np.linalg.norm(position - f.position)), f.z, f.speed]
                 key = key + 1
 
 class Heart():
@@ -79,6 +78,7 @@ class WindD():
         directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
         self.data = directions[random.randint(0,7)]
     def update(self):
+        directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
         if (random.random() < 0.5):
             self.data = directions[(random.randint(0, 7) + sign(0.5)) % 8]
 
@@ -87,9 +87,9 @@ class Temperature():
         self.data = random.randint(12, 24)
     def update(self):
         new = random.randint(12, 24)
-        if (abs(new - self.winds) > 6):
+        if (abs(new - self.data) > 6):
             self.data = round((self.data + new) / 2.3)
-        elif (abs(new - self.winds) > 3):
+        elif (abs(new - self.data) > 3):
             self.data = round((self.data + new) / 2)
         else:
             self.data = new
@@ -123,10 +123,10 @@ class ShipRadar():
 
 class Fauna():
     def __init__(self, fish):
-        self.radar = {}
+        self.data = {}
         key = 0
         for f in fish:
-            self.radar[key] = f.name
+            self.data[key] = f.name
             key = key + 1
 
 class Optimizer():
@@ -232,27 +232,3 @@ def updateFish(fish):
     for f in fish:
         f.update()
 
-
-"""
-#test main
-divers = []
-bases = []
-fish = []
-ships = []
-
-for i in range (0,200):
-    fish.append(Fish())
-    ships.append(Ship())
-
-
-for i in range(1,6):
-    divers.append(Diver(i, fish))
-    bases.append(Base(i))
-
-
-for i in range (1,11):
-    print(divers[2].radar)
-    divers[2].update()
-    updateFish(fish)
-    time.sleep(3)
-"""
