@@ -86,7 +86,7 @@
         ]
     },
     {
-        "/divers/diver1/heart rate": [
+        "/divers/diver1/heartrate": [
             {
                 "listen port": 33013,
                 "send port": 33014,
@@ -215,7 +215,7 @@
         ]
     },
     {
-        "/divers/diver2/heart rate": [
+        "/divers/diver2/heartrate": [
             {
                 "listen port": 33031,
                 "send port": 33032,
@@ -341,7 +341,7 @@
         ]
     },
     {
-        "/divers/diver3/heart rate": [
+        "/divers/diver3/heartrate": [
             {
                 "listen port": 33049,
                 "send port": 33050,
@@ -468,7 +468,7 @@
         ]
     },
     {
-        "/divers/diver4/heart rate": [
+        "/divers/diver4/heartrate": [
             {
                 "listen port": 33067,
                 "send port": 33068,
@@ -595,7 +595,7 @@
         ]
     },
     {
-        "/divers/diver5/heart rate": [
+        "/divers/diver5/heartrate": [
             {
                 "listen port": 33085,
                 "send port": 33086,
@@ -641,7 +641,7 @@
             {
                 "listen port": 33091,
                 "send port": 33092,
-                "address": "10.35.70.14"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -654,11 +654,11 @@
         ]
     },
     {
-        "/scientists/scientist1/ship recogniser": [
+        "/scientists/scientist1/shipradar": [
             {
                 "listen port": 33093,
                 "send port": 33094,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -668,11 +668,11 @@
         ]
     },
     {
-        "/scientists/scientist1/fauna recogniser": [
+        "/scientists/scientist1/fauna": [
             {
                 "listen port": 33095,
                 "send port": 33096,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -682,11 +682,11 @@
         ]
     },
     {
-        "/scientists/scientist1/power optimisation": [
+        "/scientists/scientist1/optimizer": [
             {
                 "listen port": 33097,
                 "send port": 33098,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -696,11 +696,11 @@
         ]
     },
     {
-        "/scientists/scientist1/wind power": [
+        "/scientists/scientist1/winds": [
             {
                 "listen port": 33099,
                 "send port": 33100,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -710,11 +710,11 @@
         ]
     },
     {
-        "/scientists/scientist1/wind direction": [
+        "/scientists/scientist1/windd": [
             {
                 "listen port": 33101,
                 "send port": 33102,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -728,7 +728,7 @@
             {
                 "listen port": 33103,
                 "send port": 33104,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -742,7 +742,7 @@
             {
                 "listen port": 33105,
                 "send port": 33106,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -752,11 +752,11 @@
         ]
     },
     {
-        "/scientists/scientist1/diver alert": [
+        "/scientists/scientist1/alert": [
             {
                 "listen port": 33107,
                 "send port": 33108,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -770,7 +770,7 @@
             {
                 "listen port": 33109,
                 "send port": 33110,
-                "address": "10.35.70.14"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -783,11 +783,11 @@
         ]
     },
     {
-        "/scientists/scientist2/ship recogniser": [
+        "/scientists/scientist2/shipradar": [
             {
                 "listen port": 33111,
                 "send port": 33112,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -797,11 +797,11 @@
         ]
     },
     {
-        "/scientists/scientist2/fauna recogniser": [
+        "/scientists/scientist2/fauna": [
             {
                 "listen port": 33113,
                 "send port": 33114,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -811,11 +811,11 @@
         ]
     },
     {
-        "/scientists/scientist2/power optimisation": [
+        "/scientists/scientist2/optimizer": [
             {
                 "listen port": 33115,
                 "send port": 33116,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -825,11 +825,11 @@
         ]
     },
     {
-        "/scientists/scientist2/wind power": [
+        "/scientists/scientist2/winds": [
             {
                 "listen port": 33117,
                 "send port": 33118,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -839,11 +839,11 @@
         ]
     },
     {
-        "/scientists/scientist2/wind direction": [
+        "/scientists/scientist2/windd": [
             {
                 "listen port": 33119,
                 "send port": 33120,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -857,7 +857,7 @@
             {
                 "listen port": 33121,
                 "send port": 33122,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -871,7 +871,7 @@
             {
                 "listen port": 33123,
                 "send port": 33124,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -881,11 +881,11 @@
         ]
     },
     {
-        "/scientists/scientist2/diver alert": [
+        "/scientists/scientist2/alert": [
             {
                 "listen port": 33125,
                 "send port": 33126,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -899,7 +899,7 @@
             {
                 "listen port": 33127,
                 "send port": 33128,
-                "address": "10.35.70.14"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -912,11 +912,11 @@
         ]
     },
     {
-        "/scientists/scientist3/ship recogniser": [
+        "/scientists/scientist3/shipradar": [
             {
                 "listen port": 33129,
                 "send port": 33130,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -926,11 +926,11 @@
         ]
     },
     {
-        "/scientists/scientist3/fauna recogniser": [
+        "/scientists/scientist3/fauna": [
             {
                 "listen port": 33131,
                 "send port": 33132,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -940,11 +940,11 @@
         ]
     },
     {
-        "/scientists/scientist3/power optimisation": [
+        "/scientists/scientist3/optimizer": [
             {
                 "listen port": 33133,
                 "send port": 33134,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -954,11 +954,11 @@
         ]
     },
     {
-        "/scientists/scientist3/wind power": [
+        "/scientists/scientist3/winds": [
             {
                 "listen port": 33135,
                 "send port": 33136,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -968,11 +968,11 @@
         ]
     },
     {
-        "/scientists/scientist3/wind direction": [
+        "/scientists/scientist3/windd": [
             {
                 "listen port": 33137,
                 "send port": 33138,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -986,7 +986,7 @@
             {
                 "listen port": 33139,
                 "send port": 33140,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1000,7 +1000,7 @@
             {
                 "listen port": 33141,
                 "send port": 33142,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1010,11 +1010,11 @@
         ]
     },
     {
-        "/scientists/scientist3/diver alert": [
+        "/scientists/scientist3/alert": [
             {
                 "listen port": 33143,
                 "send port": 33144,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1028,7 +1028,7 @@
             {
                 "listen port": 33145,
                 "send port": 33146,
-                "address": "10.35.70.14"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1041,11 +1041,11 @@
         ]
     },
     {
-        "/scientists/scientist4/ship recogniser": [
+        "/scientists/scientist4/shipradar": [
             {
                 "listen port": 33147,
                 "send port": 33148,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1055,11 +1055,11 @@
         ]
     },
     {
-        "/scientists/scientist4/fauna recogniser": [
+        "/scientists/scientist4/fauna": [
             {
                 "listen port": 33149,
                 "send port": 33150,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1069,11 +1069,11 @@
         ]
     },
     {
-        "/scientists/scientist4/power optimisation": [
+        "/scientists/scientist4/optimizer": [
             {
                 "listen port": 33151,
                 "send port": 33152,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1083,11 +1083,11 @@
         ]
     },
     {
-        "/scientists/scientist4/wind power": [
+        "/scientists/scientist4/winds": [
             {
                 "listen port": 33153,
                 "send port": 33154,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1097,11 +1097,11 @@
         ]
     },
     {
-        "/scientists/scientist4/wind direction": [
+        "/scientists/scientist4/windd": [
             {
                 "listen port": 33155,
                 "send port": 33156,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1115,7 +1115,7 @@
             {
                 "listen port": 33157,
                 "send port": 33158,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1129,7 +1129,7 @@
             {
                 "listen port": 33159,
                 "send port": 33160,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1139,11 +1139,11 @@
         ]
     },
     {
-        "/scientists/scientist4/diver alert": [
+        "/scientists/scientist4/alert": [
             {
                 "listen port": 33161,
                 "send port": 33162,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1157,7 +1157,7 @@
             {
                 "listen port": 33163,
                 "send port": 33164,
-                "address": "10.35.70.14"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1170,11 +1170,11 @@
         ]
     },
     {
-        "/scientists/scientist5/ship recogniser": [
+        "/scientists/scientist5/shipradar": [
             {
                 "listen port": 33165,
                 "send port": 33166,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1184,11 +1184,11 @@
         ]
     },
     {
-        "/scientists/scientist5/fauna recogniser": [
+        "/scientists/scientist5/fauna": [
             {
                 "listen port": 33167,
                 "send port": 33168,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1198,11 +1198,11 @@
         ]
     },
     {
-        "/scientists/scientist5/power optimisation": [
+        "/scientists/scientist5/optimizer": [
             {
                 "listen port": 33169,
                 "send port": 33170,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1212,11 +1212,11 @@
         ]
     },
     {
-        "/scientists/scientist5/wind power": [
+        "/scientists/scientist5/winds": [
             {
                 "listen port": 33171,
                 "send port": 33172,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1226,11 +1226,11 @@
         ]
     },
     {
-        "/scientists/scientist5/wind direction": [
+        "/scientists/scientist5/windd": [
             {
                 "listen port": 33173,
                 "send port": 33174,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1244,7 +1244,7 @@
             {
                 "listen port": 33175,
                 "send port": 33176,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1258,7 +1258,7 @@
             {
                 "listen port": 33177,
                 "send port": 33178,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
@@ -1268,11 +1268,11 @@
         ]
     },
     {
-        "/scientists/scientist5/diver alert": [
+        "/scientists/scientist5/alert": [
             {
                 "listen port": 33179,
                 "send port": 33180,
-                "address": "10.35.70.45"
+                "address": "10.35.70.44"
             },
             {
                 "neighbors": [
