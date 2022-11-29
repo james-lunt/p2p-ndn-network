@@ -35,7 +35,7 @@ def assign_class(node_interface):
             return Interfaces.Battery()
         elif(split_interface[length_interface-1] == 'radar'):
             return Interfaces.Radar(fish,position)
-        elif(split_interface[length_interface-1] == 'heart rate'):
+        elif(split_interface[length_interface-1] == 'heartrate'):
             return Interfaces.Heart()
         elif(split_interface[length_interface-1] == 'position'):
             return Interfaces.Position()
@@ -43,23 +43,23 @@ def assign_class(node_interface):
             return Interfaces.Light(position)
         elif(split_interface[length_interface-1] == 'precipitation'):
             return Interfaces.Precipitation()
-        elif(split_interface[length_interface-1] == 'ship recogniser'):
+        elif(split_interface[length_interface-1] == 'shipradar'):
             return Interfaces.ShipRadar(ships,position)
         elif(split_interface[length_interface-1] == 'pressure'):
             return Interfaces.Pressure(position)
         elif(split_interface[length_interface-1] == 'camera'):
             return Interfaces.Camera()
-        elif(split_interface[length_interface-1] == 'wind power'):
+        elif(split_interface[length_interface-1] == 'winds'):
             return Interfaces.WindS()
-        elif(split_interface[length_interface-1] == 'wind direction'):
+        elif(split_interface[length_interface-1] == 'windd'):
             return Interfaces.WindD()
         elif(split_interface[length_interface-1] == 'temperature'):
-            return Interfaces.Temparature()
-        elif(split_interface[length_interface-1] == 'fauna recogniser'):
+            return Interfaces.Temperature()
+        elif(split_interface[length_interface-1] == 'fauna'):
             return Interfaces.Fauna(fish)
-        elif(split_interface[length_interface-1] == 'power optimisation'):
+        elif(split_interface[length_interface-1] == 'optimizer'):
             return Interfaces.Optimizer(battery)
-        elif(split_interface[length_interface-1] == 'diver alert'):
+        elif(split_interface[length_interface-1] == 'alert'):
             return Interfaces.Alert(battery,fish,oxygen,ships)
 
     #If diver or scientist
