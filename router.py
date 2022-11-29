@@ -2,13 +2,14 @@ import json
 
 class Router:
     def __init__(self, name):
+        self.multi_request = 0
         self.name = name  # device name
         self.cs = dict()  # name: data: freshness
         self.pit = list(tuple())  # name
         self.fib = list(tuple())  # prefix, ip address, ongoing interface
         self.location = list(tuple()) #name, address, listen port, send port
 
-        with open("interfaces_smaller.json", 'r') as load_f:
+        with open("interfaces.json", 'r') as load_f:
             load_dict = json.load(load_f)
         #Set location
         for i in range(len(load_dict)):
@@ -86,6 +87,16 @@ class Router:
     def setFib(self, prefix, addr, interface):  # ongoing interface
         t = (prefix, addr, interface)
         self.fib.append(tuple(t))
+
+    def setMultiRequest(self):
+        self.multi_request = 0
+
+    def updateMultiRequest(self):
+        self.multi_request +=1
+
+    def getMultiRequest(self):
+        return self.multi_request
+
     
     # The longest match between the name of the matched interest packet and the prefix in the fib,
     # returned with the fib storage format, and not contains urls that do not match at all
@@ -132,4 +143,4 @@ class Router:
 
 
 
-        
+   
