@@ -1,6 +1,0 @@
-tmux new-session -d -s NDN
-tmux new-window -n d1
-tmux new-window -d -n d1light
-tmux send-keys -t NDN:bash "echo Base Control"
-tmux send-keys -t NDN:d1 "python node.py --name /divers/diver1" 
-tmux send-keys -t NDN:d2 "python node.py --name /divers/diver1/light" C-m
