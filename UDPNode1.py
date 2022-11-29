@@ -6,7 +6,7 @@ import Interfaces
 import time
 
 bufferSize  = 1024
-file = open('interfaces_smaller.json')
+file = open('interfaces.json')
 references = json.load(file)
 
 #Finds the node with the given name in the reference json and returns its index
@@ -98,14 +98,25 @@ def handle_packet(router, packet,socket):
             #Produce data packet name : data : freshness
             address = router.getAddress(interface)
             packet = (name,router.getCS()[name],0)
+            #print("Forward to " + interface)
             socket.sendto(json.dumps(packet).encode(), address)
             return
         elif packet not in router.getPit():
             print("I don't have the Data, updating PIT!")
             router.setPit(name,interface)
+            print("PIT ", router.getPit())
             #Forward Interest based on longest prefix
-            next_node = router.longestPrefix(name)
-            print("Forwarding to ", next_node[len(next_node)-1])
+            if router.getMultiRequest() ==  2:
+                next_nodes = []
+                for node in router.getFib():
+                    if len(node[0].split("/")) != 4:
+                        next_nodes.append(node)
+                next_node = [random.choice(next_nodes)] 
+                router.setMultiRequest()
+            else:
+                next_node = router.longestPrefix(name)
+                router.updateMultiRequest()
+            print("Forwarding to ", next_node[len(next_node)-1]) 
             packet = (name, router.getLocation()[0])
             socket.sendto(json.dumps(packet).encode(),(next_node[len(next_node)-1][1],next_node[len(next_node)-1][2]))
             return
