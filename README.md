@@ -5,7 +5,7 @@ Group 18 NDN run instructions.
 The following instructions is to run our two name defined networks on independent Raspberry Pi’s.
 First, clone the following repo onto each raspberry Pi or download and transfer the codebase attacked. james-lunt/peer-to-peer-name-defined-network:
 
-On Pi 1 Cd into the project folder.
+On Pi 1 Cd into the project folder.\newline
 Run the command:  source .tmux/ndn-divers
 This starts the diver network.
 On Pi 2 Cd into the project folder.
